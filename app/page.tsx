@@ -106,6 +106,29 @@ export default function Home() {
     fetchOrders();
   };
 
+  const handleSync = async () => {
+    try {
+      const res = await fetch("/api/sync", {
+        method: "POST",
+        headers: { "x-sync-manual": "true" },
+      });
+      const data = await res.json();
+      if (data.sucesso) {
+        const c = data.resultados?.clientes;
+        const p = data.resultados?.projetos;
+        alert(
+          `Sync concluído!\n\nClientes: ${c?.total || 0} (${c?.novos || 0} novos, ${c?.atualizados || 0} atualizados)\nProjetos: ${p?.total || 0} (${p?.novos || 0} novos)`
+        );
+        fetchClientes();
+      } else {
+        alert(`Erro no sync:\n${(data.erros || []).join("\n")}`);
+      }
+    } catch (err) {
+      console.error("Erro ao sincronizar:", err);
+      alert("Erro ao sincronizar com Omie.");
+    }
+  };
+
   const handleGenerateReport = async () => {
     setLoading(true);
     try {
@@ -132,6 +155,7 @@ export default function Home() {
         onNewOS={handleNewOS}
         onNewClient={() => setClientDrawerVisible(true)}
         onGenerateReport={handleGenerateReport}
+        onSync={handleSync}
       />
       <PhaseAccordion
         orders={orders}

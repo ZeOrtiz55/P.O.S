@@ -1,0 +1,291 @@
+<script>
+    var allData = [];
+    const HORA = 193.00, KM = 2.80;
+    var totalPecas = 0;
+    const PHASES = ['Orçamento', 'Orçamento enviado para o cliente e aguardando', 'Execução', 'Execução Procurando peças', 'Execução aguardando peças (em transporte)', 'Executada', 'Executada aguardando cliente', 'Executada aguardando comercial', 'Concluída', 'Cancelada'];
+    const TEXT_TEMPLATE = "Modelo: \nChassis: \nHorimetro: \n\nSolicitação do cliente: \nServiço Realizado: ";
+
+    // ============ INICIALIZAÇÃO ============
+    $(function(){
+        $('.use-select2').select2({width:'100%', dropdownParent:$('#drawer')});
+        $('#clienteChave').on('select2:select', selCli);
+        loadData();
+        setInterval(() => { if (!$('#overlay').is(':visible') && !$('#cliOverlay').is(':visible')) silentSync(); }, 30000);
+        $('#globalSearch').on('input', function(){
+            let v=$(this).val().toLowerCase();
+            renderGrid(allData.filter(o=>(o.id+o.cliente).toLowerCase().includes(v)));
+        });
+        $('#osStatus').change(checkStatusFields);
+    });
+
+    function loadData(){
+        $('#loading').show();
+        google.script.run.withSuccessHandler(d=>{
+            let cOpt='<option value="">Buscar cliente ou CNPJ...</option>';
+            d.clientes.forEach(c => cOpt+=`<option value="${c.chave}">${c.display}</option>`);
+            $('#clienteChave').html(cOpt);
+            let tOpt='<option value="">Sem Técnico...</option>';
+            d.tecnicos.forEach(t=>tOpt+=`<option value="${t}">${t}</option>`);
+            $('#tecnicoResponsavel, #tecnico2').html(tOpt);
+            allData = d.ordens; updateBadges();
+            if($('.filter-btn').length > 0) { $('.filter-btn:first').click(); }
+            $('#loading').hide();
+        }).getDadosIniciais();
+    }
+
+    function silentSync(){
+        google.script.run.withSuccessHandler(d=>{ if(d){ allData=d; updateBadges(); } }).getOrdensParaKanban();
+    }
+
+    // ============ BUSCA PROJETO ============
+    function abrirBuscaProjeto() {
+        $('#inputBuscaProj').val('');
+        $('#resultadoBuscaProj').html('<tr><td style="padding:20px; text-align:center; color:#888;">Digite o chassis ou nome do projeto...</td></tr>');
+        $('#searchProjModal').addClass('active');
+        setTimeout(() => $('#inputBuscaProj').focus(), 200);
+    }
+    function fecharBuscaProjeto() { $('#searchProjModal').removeClass('active'); }
+
+    function executarBuscaProj() {
+        let t = $('#inputBuscaProj').val().trim();
+        $('#resultadoBuscaProj').html('<tr><td style="text-align:center; padding:20px;">Buscando...</td></tr>');
+        google.script.run.withSuccessHandler(list => {
+            let h = "";
+            if(!list.length) h = '<tr><td style="padding:20px; text-align:center;">Nada encontrado.</td></tr>';
+            else list.forEach(p => {
+                h += `<tr class="search-row" onclick="selProj('${p.nome.replace(/'/g, "\\'")}')"><td style="padding:12px; border-bottom:1px solid #eee; font-size:12px;">${p.nome}</td></tr>`;
+            });
+            $('#resultadoBuscaProj').html(h);
+        }).buscarProjetosSupabase(t);
+    }
+
+    function selProj(nome) {
+        $('#osProjetoValue').val(nome);
+        $('#osProjetoDisplay').val(nome);
+        fecharBuscaProjeto();
+        let currentText = $('#servicoSolicitado').val();
+        if(!currentText || currentText.trim() === "" || currentText === TEXT_TEMPLATE) {
+            $('#servicoSolicitado').val(`Modelo: ${nome}\nChassis: ${nome}\nHorimetro: \n\nSolicitação do cliente: \nServiço Realizado: `);
+        } else {
+            let lines = currentText.split('\n');
+            if(lines[0].trim() === "Modelo:") lines[0] = "Modelo: " + nome;
+            if(lines[1].trim() === "Chassis:") lines[1] = "Chassis: " + nome;
+            $('#servicoSolicitado').val(lines.join('\n'));
+        }
+    }
+
+    // ============ BUSCA REVISÃO ============
+    function abrirBuscaRevisao() {
+        $('#inputBuscaRev').val('');
+        $('#resultadoBuscaRev').html('<tr><td style="padding:20px; text-align:center; color:#888;">Digite termos da revisão...</td></tr>');
+        $('#searchRevModal').addClass('active');
+        setTimeout(() => $('#inputBuscaRev').focus(), 300);
+    }
+    function fecharBuscaRevisao() { $('#searchRevModal').removeClass('active'); }
+
+    function executarBuscaRev() {
+        let t = $('#inputBuscaRev').val().trim();
+        google.script.run.withSuccessHandler(list => {
+            let h = "";
+            if(!list.length) h = '<tr><td style="padding:20px; text-align:center;">Nada encontrado.</td></tr>';
+            else list.forEach(r => {
+                h += `<tr class="search-row" onclick="selRev('${r.id}','${r.descricao.replace(/'/g, "\\'")}')"><td style="padding:12px; border-bottom:1px solid #eee; font-size:12px;">${r.descricao}</td></tr>`;
+            });
+            $('#resultadoBuscaRev').html(h);
+        }).buscarRevisoesSupabase(t);
+    }
+
+    function selRev(id, desc) { $('#osRevisaoId').val(id); $('#osRevisaoDisplay').val(desc); fecharBuscaRevisao(); checkBombaInjetoraAlert(); }
+
+    // ============ ALERTAS E TIPO SERVIÇO ============
+    function checkBombaInjetoraAlert() {
+        let tipo = $('#tipoServico').val();
+        let revisao = $('#osRevisaoDisplay').val();
+        const horasAlerta = ['600', '1200', '1800', '2400', '3000'];
+        let mostrar = false;
+        if (tipo === 'Revisão' && revisao) {
+            horasAlerta.forEach(h => { if (revisao.includes(h)) mostrar = true; });
+        }
+        $('#bombaAlert').toggle(mostrar);
+    }
+
+    function toggleTipoServico() {
+        let v = $('#tipoServico').val();
+        $('#areaRevisao').toggle(v === 'Revisão');
+        checkBombaInjetoraAlert();
+    }
+
+    function checkStatusFields() {
+        let st = $('#osStatus').val();
+        $('#divOmie').toggle(st === 'Concluída');
+        $('#divMotivoCancel').toggle(st === 'Cancelada');
+    }
+
+    // ============ KANBAN (FILTROS + GRID) ============
+    function updateBadges(){
+        let html = '';
+        PHASES.forEach(p => {
+            let count = allData.filter(o => o.status === p).length;
+            let active = $('.filter-btn.active').attr('title') === p ? 'active' : '';
+            html += `<button class="filter-btn ${active}" onclick="filterGrid('${p}', this)" title="${p}">${p.toUpperCase()} <span class="badge">${count}</span></button>`;
+        });
+        $('#filterBar').html(html);
+        if(!$('.filter-btn.active').length) $('.filter-btn:first').addClass('active');
+    }
+
+    function filterGrid(phase, btn){ if(btn){ $('.filter-btn').removeClass('active'); $(btn).addClass('active'); } renderGrid(allData.filter(o => o.status === phase)); }
+
+    function renderGrid(list){
+        let hoje = new Date().setHours(0,0,0,0);
+        let html = list.map(o => {
+            let cl=''; if(o.status.includes('Exec')) cl='border-left-color: #F59E0B'; else if(o.status.includes('Concluída')) cl='border-left-color: #10B981'; else if(o.status.includes('Cancelada')) cl='border-left-color: #EF4444'; else cl='border-left-color: #3B82F6';
+            let p = o.data.split('/'); let dtT = new Date(p[2], p[1]-1, p[0]).setHours(0,0,0,0);
+            let pf = o.dataFase.split('/'); let dtF = new Date(pf[2], pf[1]-1, pf[0]).setHours(0,0,0,0);
+            return `
+              <div class="card" style="${cl}" onclick="openD('${o.id}')">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px"><b>#${o.id}</b> <span style="font-size:12px; font-weight:700">R$ ${o.valor}</span></div>
+                <div style="font-weight:600; color:#1E293B; margin-bottom:4px">${o.cliente}</div>
+                <div style="font-size:10px; color:#64748B; margin-bottom:8px; line-clamp:2; overflow:hidden; display:-webkit-box; -webkit-box-orient:vertical;"><i>${o.servSolicitado}</i></div>
+                <div style="font-size:10px; color:#64748B;"><i class="far fa-calendar-alt"></i> Criado: ${Math.floor((hoje-dtT)/86400000)} dias</div>
+                <div style="font-size:10px; color:var(--primary); margin-bottom:10px;"><i class="fas fa-clock"></i> Na fase: ${Math.floor((hoje-dtF)/86400000)} dias</div>
+                <div style="display:flex; gap:8px; border-top: 1px dashed #E2E8F0; padding-top:8px"><i class="fas fa-box ${o.temPPV?'':'ind-inactive'}" style="color:${o.temPPV?'#6366F1':'#E2E8F0'}"></i><i class="fas fa-shopping-cart" style="color:${o.temReq?'#6366F1':'#E2E8F0'}"></i><i class="fas fa-file-alt" style="color:${o.temRel?'#6366F1':'#E2E8F0'}"></i></div>
+              </div>`;
+        }).join(''); $('#cardGrid').html(html);
+    }
+
+    // ============ DRAWER (ABRIR/FECHAR/EDITAR OS) ============
+    function openD(id){
+        $('#loading').show(); $('#mainForm')[0].reset(); $('#drawer').hide(); $('#overlay').addClass('active');
+        $('#linksContainer').empty(); $('#listaProdutos').empty(); totalPecas = 0; $('#logPanel').hide();
+
+        google.script.run.withSuccessHandler(d=>{
+            if(!d) { alert("Erro ao carregar OS."); $('#loading').hide(); return; }
+            $('#formMode').val('edit'); $('#osId').val(d.id); $('#nmCli').val(d.nomeCliente); $('#cpfCli').val(d.cpfCliente); $('#endCli').val(d.enderecoCliente);
+            $('#clientInfo').html(`<i class="fas fa-user"></i> ${d.nomeCliente}`).show(); $('#selCliArea').hide();
+            $('#osStatus').val(d.status); $('#tecnicoResponsavel').val(d.tecnicoResponsavel); $('#tecnico2').val(d.tecnico2);
+            $('#tipoServico').val(d.tipoServico || 'Manutenção'); $('#osRevisaoDisplay').val(d.revisao || '');
+            $('#osProjetoDisplay').val(d.projeto || ''); $('#osProjetoValue').val(d.projeto || '');
+
+            let fullDesc = d.servicoSolicitado || "";
+            if(!fullDesc || fullDesc.trim() === "") fullDesc = TEXT_TEMPLATE;
+            $('#servicoSolicitado').val(fullDesc);
+
+            $('#osOmie').val(d.ordemOmie); $('#osMotivoCancel').val(d.motivoCancelamento); $('#qtdHoras').val(d.qtdHoras); $('#qtdKm').val(d.qtdKm); $('#osPPV').val(d.ppv);
+
+            let dsc = parseFloat(d.descontoSalvo || 0);
+            $('#descValor').val(dsc.toFixed(2));
+
+            $('#btnSalvarOS').prop('disabled', false).text('Salvar OS'); $('#editStatusRow, #editFields, #btnPrint').show();
+            checkStatusFields(); toggleTipoServico();
+
+            let lHtml = "";
+            if(d.infoRelatorio && d.infoRelatorio.link) lHtml += `<div class="external-link-wrap"><div><b>Relatório Final</b></div><a href="${d.infoRelatorio.link}" target="_blank" class="link-btn">Ver PDF</a></div>`;
+            if(d.infoRequisicoes) d.infoRequisicoes.forEach(r => lHtml += `<div class="external-link-wrap"><div style="display:flex; justify-content:space-between"><b>Req: ${r.id}</b> <span style="font-size:10px">${r.atualizada?'OK':'Pendente'}</span></div><div style="font-size:10px">${r.material}</div>${r.atualizada ? `<div style="margin-top:5px"><a href="${r.linkNota}" target="_blank" class="link-btn">Ver Nota</a></div>` : ""}</div>`);
+            if(lHtml){ $('#linksContainer').html(lHtml); $('#vinculosArea').show(); } else { $('#vinculosArea').hide(); }
+
+            let ppvId = $('#osPPV').val();
+            if(ppvId){
+                google.script.run.withSuccessHandler(l=>{
+                    totalPecas=0; $('#listaProdutos').empty();
+                    if(l) l.forEach(p=>{
+                      totalPecas+=(p.valor*p.qtde);
+                      $('#listaProdutos').append(`<li style="display:flex; justify-content:space-between; margin-bottom:5px; border-bottom:1px solid #f1f5f9; padding-bottom:3px;">
+                        <span>${p.descricao} <b>(x${p.qtde})</b></span>
+                        <span style="font-weight:600">R$ ${(p.valor * p.qtde).toFixed(2)}</span>
+                      </li>`);
+                    });
+                    let sub = (parseFloat(d.qtdHoras||0)*HORA)+(parseFloat(d.qtdKm||0)*KM)+totalPecas;
+                    if(sub > 0) $('#descPorc').val(((dsc/sub)*100).toFixed(2));
+                    calcTotal();
+                }).buscarProdutosPorPPV(ppvId);
+            } else {
+                totalPecas = 0; $('#listaProdutos').empty(); calcTotal();
+            }
+
+            loadLogs(d.id); $('#drawer').css('display', 'flex'); $('#loading').hide();
+        }).getDadosOSParaEdicao(id);
+    }
+
+    function openDrawer(m){
+        $('#mainForm')[0].reset(); $('#formMode').val(m); $('#overlay').addClass('active'); $('#drawer').css('display', 'flex');
+        $('#selCliArea').show(); $('#clientInfo, #editStatusRow, #editFields, #vinculosArea, #btnPrint, #logPanel, #divOmie, #divMotivoCancel, #areaRevisao, #bombaAlert').hide();
+        $('#tipoServico').val('Manutenção'); $('#osProjetoValue, #osProjetoDisplay').val('');
+        $('#listaProdutos').empty(); totalPecas = 0;
+        $('#servicoSolicitado').val(TEXT_TEMPLATE);
+        $('#btnSalvarOS').prop('disabled', false).text('Salvar OS'); calcTotal();
+    }
+
+    function closeD(){ $('#overlay').removeClass('active'); $('#drawer').hide(); }
+
+    // ============ FINANCEIRO (DESCONTO + TOTAL) ============
+    function syncDiscount(type) {
+        let sub = (parseFloat($('#qtdHoras').val()||0)*HORA) + (parseFloat($('#qtdKm').val()||0)*KM) + totalPecas;
+        if(sub <= 0) return;
+        if(type==='P'){
+            let p = parseFloat($('#descPorc').val()||0);
+            $('#descValor').val(((p/100)*sub).toFixed(2));
+        } else {
+            let v = parseFloat($('#descValor').val()||0);
+            $('#descPorc').val(((v/sub)*100).toFixed(2));
+        }
+        calcTotal();
+    }
+
+    function calcTotal(){
+        let sub = (parseFloat($('#qtdHoras').val()||0)*HORA)+(parseFloat($('#qtdKm').val()||0)*KM)+totalPecas;
+        let d = parseFloat($('#descValor').val()||0);
+        let t = sub - d;
+        $('#totalDisplay').text('R$ '+Math.max(0, t).toFixed(2).replace('.',','));
+    }
+
+    function loadPPV(){
+        let id=$('#osPPV').val(); if(!id){ totalPecas=0; $('#listaProdutos').empty(); calcTotal(); return; }
+        google.script.run.withSuccessHandler(l=>{
+          totalPecas=0; $('#listaProdutos').empty();
+          if(l) l.forEach(p=>{
+            totalPecas+=(p.valor*p.qtde);
+            $('#listaProdutos').append(`<li style="display:flex; justify-content:space-between; margin-bottom:5px; border-bottom:1px solid #f1f5f9; padding-bottom:3px;">
+                <span>${p.descricao} <b>(x${p.qtde})</b></span>
+                <span style="font-weight:600">R$ ${(p.valor * p.qtde).toFixed(2)}</span>
+            </li>`);
+          });
+          calcTotal();
+        }).buscarProdutosPorPPV(id);
+    }
+
+    // ============ SALVAR OS ============
+    function salvar(){
+        let m = $('#formMode').val(); if(m==='create' && !$('#clienteChave').val()){ alert('Selecione o Cliente'); return; }
+        $('#btnSalvarOS').prop('disabled', true).text('Salvando...'); $('#loading').show();
+        let d = {
+            id:$('#osId').val(), tecnicoResponsavel:$('#tecnicoResponsavel').val(), tecnico2:$('#tecnico2').val(),
+            projeto:$('#osProjetoValue').val(), tipoServico:$('#tipoServico').val(), revisao:$('#osRevisaoDisplay').val(),
+            servicoSolicitado:$('#servicoSolicitado').val(),
+            qtdHoras:$('#qtdHoras').val(), qtdKm:$('#qtdKm').val(), ppv:$('#osPPV').val(),
+            status:(m === 'create') ? 'Orçamento' : $('#osStatus').val(), nomeCliente:$('#nmCli').val(),
+            cpfCliente:$('#cpfCli').val(), enderecoCliente:$('#endCli').val(), ordemOmie:$('#osOmie').val(),
+            motivoCancelamento:$('#osMotivoCancel').val(),
+            descontoValor: $('#descValor').val()
+        };
+        if (m === 'create') {
+            google.script.run.withSuccessHandler(res => { if(res.htmlPrint) imprimirHTML(res.htmlPrint); allData = res.ordensAtualizadas; updateBadges(); filterGrid($('.filter-btn.active').attr('title'), null); closeD(); $('#loading').hide(); }).withFailureHandler(err => { alert(err); $('#btnSalvarOS').prop('disabled', false).text('Salvar OS'); $('#loading').hide(); }).salvarOrdemServico(d);
+        } else {
+            google.script.run.withSuccessHandler(res => { allData = res.ordensAtualizadas; updateBadges(); filterGrid($('.filter-btn.active').attr('title'), null); closeD(); $('#loading').hide(); }).withFailureHandler(err => { alert(err); $('#btnSalvarOS').prop('disabled', false).text('Salvar OS'); $('#loading').hide(); }).updateOrdemServico(d);
+        }
+    }
+
+    // ============ IMPRESSÃO E RELATÓRIOS ============
+    function reimprimir(){ $('#btnPrint').prop('disabled', true).text('Gerando...'); google.script.run.withSuccessHandler(r => { imprimirHTML(r.htmlPrint); $('#btnPrint').prop('disabled', false).text('Imprimir'); }).withFailureHandler(err => { alert(err); $('#btnPrint').prop('disabled', false).text('Imprimir'); }).regerarPDF($('#osId').val()); }
+    function imprimirRelatorioGeral() { $('#btnRelatGeral').prop('disabled', true).text('Gerando...'); $('#loading').show(); google.script.run.withSuccessHandler(html => { $('#loading').hide(); imprimirHTML(html); $('#btnRelatGeral').prop('disabled', false).html('<i class="fas fa-file-invoice"></i> GERAR RELATÓRIO'); }).withFailureHandler(err => { $('#loading').hide(); alert(err); $('#btnRelatGeral').prop('disabled', false).html('<i class="fas fa-file-invoice"></i> GERAR RELATÓRIO'); }).gerarRelatorioGeral(); }
+    function imprimirHTML(h){ let w=window.open('','_blank','width=1100,height=800'); w.document.write(h); w.document.close(); setTimeout(()=>{w.focus();w.print();},500); }
+
+    // ============ CLIENTES ============
+    function openCliDrawer() { $('#cliForm')[0].reset(); $('#cliOverlay').addClass('active'); }
+    function closeCliD() { $('#cliOverlay').removeClass('active'); }
+    function salvarCliente(){ let d = { nome: $('#cliNome').val(), cpf: $('#cliCpf').val(), email: $('#cliEmail').val(), telefone: $('#cliFone').val(), endereco: $('#cliEnd').val(), cidade: $('#cliCidade').val() }; if(!d.nome){ alert("Nome obrigatório"); return; } $('#btnSalvarCli').prop('disabled', true).text('Salvando...'); google.script.run.withSuccessHandler(res => { let cOpt='<option value="">Buscar cliente ou CNPJ...</option>'; res.dadosIniciais.clientes.forEach(c => cOpt+=`<option value="${c.chave}">${c.display}</option>`); $('#clienteChave').html(cOpt); closeCliD(); alert("Cliente cadastrado!"); }).salvarNovoClienteManual(d); }
+    function selCli(){ $('#loading').show(); google.script.run.withSuccessHandler(c=>{ $('#loading').hide(); $('#nmCli').val(c.nome); $('#cpfCli').val(c.cpf); $('#endCli').val(c.endereco); $('#clientInfo').html(`<i class="fas fa-check"></i> Cliente Selecionado: ${c.nome}`).show(); }).getDadosCliente($('#clienteChave').val()); }
+
+    // ============ LOGS ============
+    function loadLogs(osId) { google.script.run.withSuccessHandler(logs => { let html = logs.length ? "" : '<div style="padding:20px; color:#ccc; text-align:center">Sem histórico.</div>'; logs.forEach(l => html += `<div style="padding:15px; border-bottom:1px solid #F1F5F9; font-size:12px;"><div style="color:var(--primary); font-weight:600;">${l.data}</div><div style="font-weight:600">${l.acao}</div><div style="font-size:10px; color:#999">${l.usuario}</div></div>`); $('#logContent').html(html); }).getLogsPPO(osId); }
+    function toggleLogs() { $('#logPanel').toggle(); }
+</script>

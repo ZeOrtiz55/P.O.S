@@ -1,0 +1,108 @@
+/**
+ * =========================================================================
+ * 🛠️ CRIAR OS - SEGUINDO A DOCUMENTAÇÃO OFICIAL (AJUDA.OMIE)
+ * =========================================================================
+ */
+
+function criarOS_DocumentacaoOficial() {
+  // --- SEUS DADOS (IDs que já descobrimos) ---
+  const ID_CLIENTE = 2202193639;        
+  const ID_CONTA_CORRENTE = 1969919780; // Banco do Brasil
+  const ID_SERVICO = 1980428676;        // Serviço "Abrir Trator"
+
+  // Gera ID único para o campo cCodIntOS (Obrigatório segundo o JSON)
+  const codIntegracao = "API-" + new Date().getTime();
+
+  console.log(`Criando OS conforme documentação... (ID Integração: ${codIntegracao})`);
+
+  // ESTRUTURA BASEADA EXATAMENTE NO SEU EXEMPLO
+  const novaOS = {
+    "Cabecalho": {
+      "cCodIntOS": codIntegracao,
+      "cEtapa": "10",               // 10 = Proposta/Orçamento
+      "dDtPrevisao": "25/12/2025",
+      "nCodCli": ID_CLIENTE,
+      "nQtdeParc": 1                // CORREÇÃO: O nome correto é 'nQtdeParc'
+    },
+    "InformacoesAdicionais": {
+      "cCodCateg": "1.01.02",       // Categoria Padrão (Receita de Serviços) - Ajustável se necessário
+      "cDadosAdicNF": "OS incluída via API Google",
+      "nCodCC": ID_CONTA_CORRENTE   // Conta Corrente aqui
+    },
+    "ServicosPrestados": [
+      {
+        // Nota: A doc usa códigos fiscais, mas a API aceita o ID interno (nCodServico)
+        // que é mais seguro pois já validamos que ele existe.
+        "nCodServico": ID_SERVICO,  
+        "nQtde": 1,
+        "nValUnit": 150
+      }
+    ],
+    "Email": {
+      "cEnvBoleto": "N",
+      "cEnvLink": "N",
+      "cEnviarPara": "" // Deixe vazio para não enviar email agora
+    }
+  };
+
+  const resultado = enviarParaApiServicos(novaOS);
+
+  if (resultado.sucesso) {
+    console.log("✅ SUCESSO! ORDEM DE SERVIÇO CRIADA.");
+    console.log("------------------------------------------------");
+    console.log("Número da OS: " + resultado.numeroOS);
+    console.log("ID da OS:     " + resultado.idOS);
+    console.log("------------------------------------------------");
+  } else {
+    console.error("❌ ERRO AO CRIAR OS:");
+    console.error(resultado.erro);
+  }
+}
+
+/**
+ * Função de Envio
+ */
+function enviarParaApiServicos(dadosOS) {
+  const url = "https://app.omie.com.br/api/v1/servicos/os/";
+  const { appKey, appSecret } = getCredentials();
+
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "IncluirOS",
+    param: [dadosOS]
+  };
+
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, options);
+    const json = JSON.parse(response.getContentText());
+
+    if (json.faultstring) {
+      return { sucesso: false, erro: json.faultstring };
+    }
+
+    return {
+      sucesso: true,
+      numeroOS: json.cNumOS,
+      idOS: json.nCodOS,
+      status: json.cStatus
+    };
+
+  } catch (e) {
+    return { sucesso: false, erro: e.toString() };
+  }
+}
+
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}

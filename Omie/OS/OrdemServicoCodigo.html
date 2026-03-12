@@ -1,0 +1,1172 @@
+
+<!-- saved from url=(0070)https://app.omie.com.br/api/v1/servicos/servico/#ListarCadastroServico -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body style=""><nav class="navbar navbar-expand-lg bg-azul">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://developer.omie.com.br/">
+            <img class="lozad img-logo" data-src="https://static.omie.com.br/images/logo/logo-omie-topo.png" src="./OrdemServicoCodigo_files/logo-omie-topo.png" data-loaded="true">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://developer.omie.com.br/my-apps/"> Aplicativos </a>
+                </li>
+                <li class="nav-item ">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://developer.omie.com.br/service-list/">
+                        Lista das API's
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://ajuda.omie.com.br/pt-BR/collections/3045828-apis" target="_blank"> Ajuda </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<title>Servicos</title>
+<style type="text/css" media="all">
+  [id] { scroll-margin-top: 68px; }
+</style>
+<script src="./OrdemServicoCodigo_files/jquery-1.11.0.min.js.download"></script>
+<script src="./OrdemServicoCodigo_files/omie-compat-v2.min.js.download"></script>
+<script src="./OrdemServicoCodigo_files/developer.js.download"></script>
+<link rel="stylesheet" href="./OrdemServicoCodigo_files/bootstrap.min.css" async="">
+<link href="./OrdemServicoCodigo_files/site.css" media="all" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./OrdemServicoCodigo_files/developer.css" async="">
+
+
+<div class="jumbotron banner bg-azul">
+<div class="container">
+<img src="./OrdemServicoCodigo_files/seta-azuis.png" alt="" class="img-setas">
+<div class="row align-items-center">
+<div class="col-12">
+<h1>Servicos</h1>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="https://app.omie.com.br/api/v1/servicos/servico/#section-endpoint" aria-controls="section-endpoint" role="tab" data-toggle="tab">Endpoint</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/servico/#section-wsdl" aria-controls="section-wsdl" role="tab" data-toggle="tab">WSDL</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/servico/#section-php-soap" aria-controls="section-php-soap" role="tab" data-toggle="tab">PHP SOAP</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/servico/#section-json" aria-controls="section-json" role="tab" data-toggle="tab">JSON</a></li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="section-endpoint">
+    <h4>Endpoint URI</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/servico/"><pre><code>https://app.omie.com.br/api/v1/servicos/servico/</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-wsdl">
+    <h4>WSDL URI</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/servico/?WSDL"><pre><code>https://app.omie.com.br/api/v1/servicos/servico/?WSDL</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-php-soap">
+    <h4>PHP SOAP client download</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/servico/?PHPSOAPCLIENT" "=""><pre><code>https://app.omie.com.br/api/v1/servicos/servico/?PHPSOAPCLIENT</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-json">
+    <h4>JSON client download URI</h4>
+    <h5>PHP</h5>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/servico/?PHPJSONCLIENT"><pre><code>https://app.omie.com.br/api/v1/servicos/servico/?PHPJSONCLIENT</code></pre></a>
+    <h5>JavaScript (recomendado para uso apenas do lado do servidor)</h5>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/servico/?JSJSONCLIENT"><pre><code>https://app.omie.com.br/api/v1/servicos/servico/?JSJSONCLIENT</code></pre></a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<h2>Métodos</h2>
+<p>Veja abaixo a documentação de cada método disponível para este serviço.</p>
+<div id="AlterarCadastroServico" class="methodItem">
+<h3 class="method-name">AlterarCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvEditarRequest">srvEditarRequest</a></td>
+<td class="method-parameter-name">srvEditarRequest</td><td class="method-parameter-docs"><div class="first">Requisição de alteração do cadastro do serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvEditarResponse"><span class="lightBlue">srvEditarResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"intEditar":</span> {
+    <span class="key">"cCodIntServ":</span> <span class="string">""</span>,
+    <span class="key">"nCodServ":</span> <span class="number">0</span>
+  },
+  <span class="key">"descricao":</span> {
+    <span class="key">"cDescrCompleta":</span> <span class="string">"descricao"</span>
+  },
+  <span class="key">"cabecalho":</span> {
+    <span class="key">"cDescricao":</span> <span class="string">"Descricao"</span>,
+    <span class="key">"cCodigo":</span> <span class="string">""</span>,
+    <span class="key">"cIdTrib":</span> <span class="string">""</span>,
+    <span class="key">"cCodServMun":</span> <span class="string">""</span>,
+    <span class="key">"cCodLC116":</span> <span class="string">""</span>,
+    <span class="key">"nIdNBS":</span> <span class="string">""</span>,
+    <span class="key">"nPrecoUnit":</span> <span class="number">10.99</span>,
+    <span class="key">"cCodCateg":</span> <span class="string">""</span>
+  },
+  <span class="key">"impostos":</span> {
+    <span class="key">"nAliqISS":</span> <span class="number">0</span>,
+    <span class="key">"cRetISS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqPIS":</span> <span class="number">0</span>,
+    <span class="key">"cRetPIS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"cRetCOFINS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCSLL":</span> <span class="number">0</span>,
+    <span class="key">"cRetCSLL":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqIR":</span> <span class="number">0</span>,
+    <span class="key">"cRetIR":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqINSS":</span> <span class="number">0</span>,
+    <span class="key">"cRetINSS":</span> <span class="string">"N"</span>,
+    <span class="key">"nRedBaseINSS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBaseCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBasePIS":</span> <span class="number">0</span>,
+    <span class="key">"lDeduzISS":</span> <span class="boolean">false</span>
+  }
+}</pre>
+<button class="btn btn-success method-example" data-method="AlterarCadastroServico" data-example="%7B+++%22intEditar%22%3A+%7B+++++++%22cCodIntServ%22%3A+%22%22%2C++++++%22nCodServ%22++++%3A0++++%7D%2C+++%22descricao%22%3A+%7B+++++++%22cDescrCompleta%22%3A%22descricao%22+%7D%2C+++%22cabecalho%22%3A+%7B++++++%22cDescricao%22%3A%22Descricao%22%2C++++++%22cCodigo%22%3A%22%22%2C++++++%22cIdTrib%22%3A%22%22%2C++++++%22cCodServMun%22%3A%22%22%2C++++++%22cCodLC116%22%3A%22%22%2C++++++%22nIdNBS%22%3A%22%22%2C++++++%22nPrecoUnit%22%3A10.99%2C++++++%22cCodCateg%22%3A%22%22+++%7D%2C+++%22impostos%22%3A%7B++++++%22nAliqISS%22%3A0%2C++++++%22cRetISS%22%3A%22N%22%2C++++++%22nAliqPIS%22%3A0%2C++++++%22cRetPIS%22%3A%22N%22%2C++++++%22nAliqCOFINS%22%3A0%2C++++++%22cRetCOFINS%22%3A%22N%22%2C++++++%22nAliqCSLL%22%3A0%2C++++++%22cRetCSLL%22%3A%22N%22%2C++++++%22nAliqIR%22%3A0%2C++++++%22cRetIR%22%3A%22N%22%2C++++++%22nAliqINSS%22%3A0%2C++++++%22cRetINSS%22%3A%22N%22%2C++++++%22nRedBaseINSS%22%3A0%2C++++++%22nRedBaseCOFINS%22%3A+0%2C++++++%22nRedBasePIS%22%3A+0%2C++++++%22lDeduzISS%22+%3A+false+++%7D%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="AssociarCodIntServico" class="methodItem">
+<h3 class="method-name">AssociarCodIntServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvAssociarRequest">srvAssociarRequest</a></td>
+<td class="method-parameter-name">srvAssociarRequest</td><td class="method-parameter-docs"><div class="first">Requisição da associação do código de integração do cadastro do serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvAssociarResponse"><span class="lightBlue">srvAssociarResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"nCodServ":</span> <span class="number">0</span>,
+  <span class="key">"cCodIntServ":</span> <span class="string">""</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="AssociarCodIntServico" data-example="%7B+++%22nCodServ%22%3A+0%2C+++%22cCodIntServ%22%3A+%22%22%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ConsultarCadastroServico" class="methodItem">
+<h3 class="method-name">ConsultarCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvConsultarRequest">srvConsultarRequest</a></td>
+<td class="method-parameter-name">srvConsultarRequest</td><td class="method-parameter-docs"><div class="first">Requisição da consulta do serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvConsultarResponse"><span class="lightBlue">srvConsultarResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntServ":</span> <span class="string">""</span>,
+  <span class="key">"nCodServ":</span> <span class="number">0</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ConsultarCadastroServico" data-example="%7B++%22cCodIntServ%22%3A+%22%22%2C++%22nCodServ%22%3A+0%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ExcluirCadastroServico" class="methodItem">
+<h3 class="method-name">ExcluirCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvExcluirRequest">srvExcluirRequest</a></td>
+<td class="method-parameter-name">srvExcluirRequest</td><td class="method-parameter-docs"><div class="first">Requisição da exclusão do Serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvExcluirResponse"><span class="lightBlue">srvExcluirResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntServ":</span> <span class="string">""</span>,
+  <span class="key">"nCodServ":</span> <span class="number">0</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ExcluirCadastroServico" data-example="%7B++%22cCodIntServ%22%3A+%22%22%2C++%22nCodServ%22%3A+0%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="IncluirCadastroServico" class="methodItem">
+<h3 class="method-name">IncluirCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvIncluirRequest">srvIncluirRequest</a></td>
+<td class="method-parameter-name">srvIncluirRequest</td><td class="method-parameter-docs"><div class="first">Requisição de inclusão do cadastro do serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvIncluirResponse"><span class="lightBlue">srvIncluirResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"intIncluir":</span> {
+    <span class="key">"cCodIntServ":</span> <span class="string">"1234"</span>
+  },
+  <span class="key">"descricao":</span> {
+    <span class="key">"cDescrCompleta":</span> <span class="string">"descricao"</span>
+  },
+  <span class="key">"cabecalho":</span> {
+    <span class="key">"cDescricao":</span> <span class="string">"Descricao"</span>,
+    <span class="key">"cCodigo":</span> <span class="string">"1234"</span>,
+    <span class="key">"cIdTrib":</span> <span class="string">""</span>,
+    <span class="key">"cCodServMun":</span> <span class="string">""</span>,
+    <span class="key">"cCodLC116":</span> <span class="string">""</span>,
+    <span class="key">"nIdNBS":</span> <span class="string">""</span>,
+    <span class="key">"nPrecoUnit":</span> <span class="number">10.99</span>,
+    <span class="key">"cCodCateg":</span> <span class="string">""</span>
+  },
+  <span class="key">"impostos":</span> {
+    <span class="key">"nAliqISS":</span> <span class="number">0</span>,
+    <span class="key">"cRetISS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqPIS":</span> <span class="number">0</span>,
+    <span class="key">"cRetPIS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"cRetCOFINS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCSLL":</span> <span class="number">0</span>,
+    <span class="key">"cRetCSLL":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqIR":</span> <span class="number">0</span>,
+    <span class="key">"cRetIR":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqINSS":</span> <span class="number">0</span>,
+    <span class="key">"cRetINSS":</span> <span class="string">"N"</span>,
+    <span class="key">"nRedBaseINSS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBaseCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBasePIS":</span> <span class="number">0</span>,
+    <span class="key">"lDeduzISS":</span> <span class="boolean">false</span>
+  }
+}</pre>
+<button class="btn btn-success method-example" data-method="IncluirCadastroServico" data-example="%7B+++%22intIncluir%22%3A+%7B+++++++%22cCodIntServ%22%3A+%221234%22+%7D%2C+++%22descricao%22%3A+%7B+++++++%22cDescrCompleta%22%3A%22descricao%22+%7D%2C+++%22cabecalho%22%3A+%7B++++++%22cDescricao%22%3A%22Descricao%22%2C++++++%22cCodigo%22%3A%221234%22%2C++++++%22cIdTrib%22%3A%22%22%2C++++++%22cCodServMun%22%3A%22%22%2C++++++%22cCodLC116%22%3A%22%22%2C++++++%22nIdNBS%22%3A%22%22%2C++++++%22nPrecoUnit%22%3A10.99%2C++++++%22cCodCateg%22%3A%22%22+++%7D%2C+++%22impostos%22%3A%7B++++++%22nAliqISS%22%3A0%2C++++++%22cRetISS%22%3A%22N%22%2C++++++%22nAliqPIS%22%3A0%2C++++++%22cRetPIS%22%3A%22N%22%2C++++++%22nAliqCOFINS%22%3A0%2C++++++%22cRetCOFINS%22%3A%22N%22%2C++++++%22nAliqCSLL%22%3A0%2C++++++%22cRetCSLL%22%3A%22N%22%2C++++++%22nAliqIR%22%3A0%2C++++++%22cRetIR%22%3A%22N%22%2C++++++%22nAliqINSS%22%3A0%2C++++++%22cRetINSS%22%3A%22N%22%2C++++++%22nRedBaseINSS%22%3A0%2C++++++%22nRedBaseCOFINS%22%3A+0%2C++++++%22nRedBasePIS%22%3A+0%2C++++++%22lDeduzISS%22+%3A+false%7D%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ListarCadastroServico" class="methodItem">
+<h3 class="method-name">ListarCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvListarRequest">srvListarRequest</a></td>
+<td class="method-parameter-name">srvListarRequest</td><td class="method-parameter-docs"><div class="first">Solicitação da listagem de serviços.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvListarResponse"><span class="lightBlue">srvListarResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"nPagina":</span> <span class="number">1</span>,
+  <span class="key">"nRegPorPagina":</span> <span class="number">20</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ListarCadastroServico" data-example="%7B++%22nPagina%22%3A+1%2C++%22nRegPorPagina%22%3A+20%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="UpsertCadastroServico" class="methodItem">
+<h3 class="method-name">UpsertCadastroServico</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvUpsertRequest">srvUpsertRequest</a></td>
+<td class="method-parameter-name">srvUpsertRequest</td><td class="method-parameter-docs"><div class="first">Requisição de upsert do cadastro do serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#srvUpsertResponse"><span class="lightBlue">srvUpsertResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"intEditar":</span> {
+    <span class="key">"cCodIntServ":</span> <span class="string">""</span>,
+    <span class="key">"nCodServ":</span> <span class="number">0</span>
+  },
+  <span class="key">"descricao":</span> {
+    <span class="key">"cDescrCompleta":</span> <span class="string">"descricao"</span>
+  },
+  <span class="key">"cabecalho":</span> {
+    <span class="key">"cDescricao":</span> <span class="string">"Descricao"</span>,
+    <span class="key">"cCodigo":</span> <span class="string">""</span>,
+    <span class="key">"cIdTrib":</span> <span class="string">""</span>,
+    <span class="key">"cCodServMun":</span> <span class="string">""</span>,
+    <span class="key">"cCodLC116":</span> <span class="string">""</span>,
+    <span class="key">"nIdNBS":</span> <span class="string">""</span>,
+    <span class="key">"nPrecoUnit":</span> <span class="number">10.99</span>,
+    <span class="key">"cCodCateg":</span> <span class="string">""</span>
+  },
+  <span class="key">"impostos":</span> {
+    <span class="key">"nAliqISS":</span> <span class="number">0</span>,
+    <span class="key">"cRetISS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqPIS":</span> <span class="number">0</span>,
+    <span class="key">"cRetPIS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"cRetCOFINS":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqCSLL":</span> <span class="number">0</span>,
+    <span class="key">"cRetCSLL":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqIR":</span> <span class="number">0</span>,
+    <span class="key">"cRetIR":</span> <span class="string">"N"</span>,
+    <span class="key">"nAliqINSS":</span> <span class="number">0</span>,
+    <span class="key">"cRetINSS":</span> <span class="string">"N"</span>,
+    <span class="key">"nRedBaseINSS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBaseCOFINS":</span> <span class="number">0</span>,
+    <span class="key">"nRedBasePIS":</span> <span class="number">0</span>,
+    <span class="key">"lDeduzISS":</span> <span class="boolean">false</span>
+  }
+}</pre>
+<button class="btn btn-success method-example" data-method="UpsertCadastroServico" data-example="%7B+++%22intEditar%22%3A+%7B+++++++%22cCodIntServ%22%3A+%22%22%2C++++++%22nCodServ%22++++%3A0++++%7D%2C+++%22descricao%22%3A+%7B+++++++%22cDescrCompleta%22%3A%22descricao%22+%7D%2C+++%22cabecalho%22%3A+%7B++++++%22cDescricao%22%3A%22Descricao%22%2C++++++%22cCodigo%22%3A%22%22%2C++++++%22cIdTrib%22%3A%22%22%2C++++++%22cCodServMun%22%3A%22%22%2C++++++%22cCodLC116%22%3A%22%22%2C++++++%22nIdNBS%22%3A%22%22%2C++++++%22nPrecoUnit%22%3A10.99%2C++++++%22cCodCateg%22%3A%22%22+++%7D%2C+++%22impostos%22%3A%7B++++++%22nAliqISS%22%3A0%2C++++++%22cRetISS%22%3A%22N%22%2C++++++%22nAliqPIS%22%3A0%2C++++++%22cRetPIS%22%3A%22N%22%2C++++++%22nAliqCOFINS%22%3A0%2C++++++%22cRetCOFINS%22%3A%22N%22%2C++++++%22nAliqCSLL%22%3A0%2C++++++%22cRetCSLL%22%3A%22N%22%2C++++++%22nAliqIR%22%3A0%2C++++++%22cRetIR%22%3A%22N%22%2C++++++%22nAliqINSS%22%3A0%2C++++++%22cRetINSS%22%3A%22N%22%2C++++++%22nRedBaseINSS%22%3A0%2C++++++%22nRedBaseCOFINS%22%3A+0%2C++++++%22nRedBasePIS%22%3A+0%2C++++++%22lDeduzISS%22+%3A+false+++++%7D%7D">Teste agora mesmo</button>
+</div>
+</div>
+<h2>Tipos Complexos</h2>
+<div class="complexTypeItem">
+<a name="cabecalho"></a>
+<h3>cabecalho</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cDescricao</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Descrição Resumida do serviço prestado.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodigo</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cIdTrib</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">ID da Tributação dos Serviços.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodServMun</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código do Serviço Municipal.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodLC116</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Código do Serviço LC 116.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nIdNBS</td>
+<td class="parameter-type">string<span class="parameter-lenght">9</span></td><td class="parameter-docs"><div class="first">Id do NBS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPrecoUnit</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Preço Unitário do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodCateg</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código da Categoria.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoDesc</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Tipo do desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>P - Percentual<br>V - Valor<br><br>Utilizado apenas nos métodos de Consulta/Listagem.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorDesc</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Utilizado apenas nos métodos de Consulta/Listagem.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqDesc</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual do desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Utilizado apenas nos métodos de Consulta/Listagem.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="cadastros"></a>
+<h3>cadastros</h3>
+<p>Lista os cadastros encontrados.</p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">intListar</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#intListar">intListar</a></td><td class="parameter-docs"><div class="first">Dados da integração do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cabecalho">cabecalho</a></td><td class="parameter-docs"><div class="first">Dados do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#descricao">descricao</a></td><td class="parameter-docs"><div class="first">Descrição do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Impostos e Retenções do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">info</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#info">info</a></td><td class="parameter-docs"><div class="first">Dados da registro.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtosUtilizados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtosUtilizados">produtosUtilizados</a></td><td class="parameter-docs"><div class="first">Produtos Utilizados no serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">NF Via Única (Modelo 21 e 22)</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="cadastrosArray"></a>
+<h3>cadastrosArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cadastros"><span class="lightBlue">cadastros</span></a></span></p>
+<p>Lista de cadastros</p>
+</div>
+<div class="complexTypeItem">
+<a name="descricao"></a>
+<h3>descricao</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cDescrCompleta</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição completa do serviço prestado.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="impostos"></a>
+<h3>impostos</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nAliqISS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de ISS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetISS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">ISS Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqPIS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do PIS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetPIS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">PIS Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCOFINS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de COFINS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetCOFINS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">COFINS Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCSLL</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de CSLL.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetCSLL</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">CSLL Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIR</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do IR.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetIR</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">IR Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqINSS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de INSS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetINSS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">INSS Retido (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRedBaseINSS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de Redução da Base de Cálculo de INSS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRedBasePIS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de Redução da Base de Cálculo de PIS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRedBaseCOFINS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de Redução da Base de Cálculo de COFINS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lDeduzISS</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Deduz o ISS da Base de Cálculo de PIS e COFINS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCbs</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do CBS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCstIbsCbs</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Código da Situação Tributária IBS/CBS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIbsUf</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do IBS Estadual.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIbsMun</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do Alíquota do IBS Municipal.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoIbsUf</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução IBS municipal.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoIbsMun</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução IBS estadual.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoCbs</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução CBS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cClassTrib</td>
+<td class="parameter-type">string<span class="parameter-lenght">6</span></td><td class="parameter-docs"><div class="first">Código de Classificação Tributária.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cIndOper</td>
+<td class="parameter-type">string<span class="parameter-lenght">6</span></td><td class="parameter-docs"><div class="first">Código Indicador de Operação.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="info"></a>
+<h3>info</h3>
+<p>Dados da registro.</p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">dInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Inclusão.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Inclusão.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">uInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Usuário da Inclusão.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Alteração.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Alteração.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">uAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Usuário da Alteração.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cImpAPI</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Importado pela API (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">inativo</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o serviço está inativo (S/N).</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="intEditar"></a>
+<h3>intEditar</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="intIncluir"></a>
+<h3>intIncluir</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="intListar"></a>
+<h3>intListar</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="omie_fail"></a>
+<h3>omie_fail</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">code</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Codigo do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">description</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descricao do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-required">referer</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Origem do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-required">fatal</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Indica se eh um erro fatal</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="produtoUtilizado"></a>
+<h3>produtoUtilizado</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nIdItemPU</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">(Código interno utilizado apenas na API). </div><div class="more"><a href="javascript:void(0)">+</a><div>Não informar na inclusão.<br><br>Esse código não aparece na tela do Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAcaoItemPU</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Pode ser:</div><div class="more"><a href="javascript:void(0)">+</a><div>"A" - Alterar o item.<br>"E" - Excluir o item.<br>"I" - Incluir o item na alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodProdutoPU</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código interno do produto.</div><div class="more"><a href="javascript:void(0)">+</a><div>(utilizado apenas na API).<br>Esse código não aparece na tela do Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQtdePU</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Quantidade.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">codigo_local_estoque</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Local do Estoque.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="produtoUtilizadoArray"></a>
+<h3>produtoUtilizadoArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtoUtilizado"><span class="lightBlue">produtoUtilizado</span></a></span></p>
+<p>Lista de produtoUtilizado</p>
+</div>
+<div class="complexTypeItem">
+<a name="produtosUtilizados"></a>
+<h3>produtosUtilizados</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cAtualizarProdutos</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Atualiza automaticamente. (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Atualiza as alterações dos produtos utilizados nas Ordens de Serviço e nos Contratos.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtoUtilizado</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtoUtilizadoArray">produtoUtilizadoArray</a></td><td class="parameter-docs"><div class="first">rodutos utilizados no serviço.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvAssociarRequest"></a>
+<h3>srvAssociarRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvAssociarResponse"></a>
+<h3>srvAssociarResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvConsultarRequest"></a>
+<h3>srvConsultarRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvConsultarResponse"></a>
+<h3>srvConsultarResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">intListar</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#intListar">intListar</a></td><td class="parameter-docs"><div class="first">Dados da integração do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cabecalho">cabecalho</a></td><td class="parameter-docs"><div class="first">Dados do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#descricao">descricao</a></td><td class="parameter-docs"><div class="first">Descrição do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Impostos e Retenções do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">info</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#info">info</a></td><td class="parameter-docs"><div class="first">Dados da registro.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtosUtilizados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtosUtilizados">produtosUtilizados</a></td><td class="parameter-docs"><div class="first">Produtos Utilizados no serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">NF Via Única (Modelo 21 e 22)</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvEditarRequest"></a>
+<h3>srvEditarRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">intEditar</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#intEditar">intEditar</a></td><td class="parameter-docs"><div class="first">Dados da integração do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cabecalho">cabecalho</a></td><td class="parameter-docs"><div class="first">Dados do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#descricao">descricao</a></td><td class="parameter-docs"><div class="first">Descrição do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Impostos e Retenções do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtosUtilizados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtosUtilizados">produtosUtilizados</a></td><td class="parameter-docs"><div class="first">Produtos Utilizados no serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">NF Via Única (Modelo 21 e 22)</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvEditarResponse"></a>
+<h3>srvEditarResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvExcluirRequest"></a>
+<h3>srvExcluirRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvExcluirResponse"></a>
+<h3>srvExcluirResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvIncluirRequest"></a>
+<h3>srvIncluirRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">intIncluir</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#intIncluir">intIncluir</a></td><td class="parameter-docs"><div class="first">Dados da integração do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cabecalho">cabecalho</a></td><td class="parameter-docs"><div class="first">Dados do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#descricao">descricao</a></td><td class="parameter-docs"><div class="first">Descrição do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Impostos e Retenções do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtosUtilizados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#produtosUtilizados">produtosUtilizados</a></td><td class="parameter-docs"><div class="first">Produtos Utilizados no serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">NF Via Única (Modelo 21 e 22)</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvIncluirResponse"></a>
+<h3>srvIncluirResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvListarRequest"></a>
+<h3>srvListarRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nPagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número da página retornada</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRegPorPagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número de registros retornados na página.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cOrdenarPor</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Ordem de exibição dos dados. Padrão: Código.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cOrdemDecrescente</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Se a lista será apresentada em ordem decrescente.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dInclusaoInicial</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Inclusão Inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dInclusaoFinal</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Inclusão final</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dAlteracaoInicial</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Alteração Inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dAlteracaoFinal</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da Alteração final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hInclusaoInicial</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Inclusão Inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hInclusaoFinal</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Inclusão Final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hAlteracaoInicial</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Alteração Inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hAlteracaoFinal</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da Alteração Final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescricao</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Descrição Resumida do serviço prestado.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodigo</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">inativo</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o serviço está inativo (S/N).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cExibirProdutos</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Exibir os produtos utilizados (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Opcional.<br><br>Preencher com "S" ou "N".<br></div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvListarResponse"></a>
+<h3>srvListarResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nPagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número da página retornada</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nTotPaginas</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número total de páginas</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRegistros</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número de registros retornados na página.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nTotRegistros</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">total de registros encontrados</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cadastros</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cadastrosArray">cadastrosArray</a></td><td class="parameter-docs"><div class="first">Lista os cadastros encontrados.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvUpsertRequest"></a>
+<h3>srvUpsertRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">intEditar</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#intEditar">intEditar</a></td><td class="parameter-docs"><div class="first">Dados da integração do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#cabecalho">cabecalho</a></td><td class="parameter-docs"><div class="first">Dados do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#descricao">descricao</a></td><td class="parameter-docs"><div class="first">Descrição do Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Impostos e Retenções do serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/servico/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">NF Via Única (Modelo 21 e 22)</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="srvUpsertResponse"></a>
+<h3>srvUpsertResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Utilizado em serviços criados via API, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodServ</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado internamente, não é visualizado na tela)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="viaUnica"></a>
+<h3>viaUnica</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cUtilizaViaUnica</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o serviço utiliza Nota Fiscal Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>S - Sim<br>N - Não</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cModeloNF</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Indica qual modelo de NF será emitida para o serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cUtilizaViaUnica for igual a "S".<br><br>Pode ser: <br>21 - Nota Fiscal de Serviço de Comunicação<br>22 - Nota Fiscal de Serviço de Telecomunicação</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCFOP</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Código CFOP para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cUtilizaViaUnica for igual a "S".<br><br>Utilize a tag "nCodigo" do método "ListarCFOP" da API  /api/v1/produtos/cfop/ para obter essa informação.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cClassifServico</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código da Classificação para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cUtilizaViaUnica for igual a "S".<br><br>Utilize a tag "cCodigo" do método "ListarClassificacaoServico" da API<br>/api/v1/servicos/classificacaoservico/ para obter essa informação.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoReceita</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indicador do Tipo de Receita para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cUtilizaViaUnica for igual a "S".<br><br>Pode ser:<br>0 - Receita própria - serviços prestados<br>1 - Receita própria - cobrança de débitos<br>2 - Receita própria - venda de mercadorias<br>3 - Receita própria - venda de serviço pré-pago<br>4 - Outras receitas próprias<br>5 - Receitas de terceiros (co-faturamento)<br>9 - Outras receitas de terceiros</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoUtilizacao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Código do tipo de utilização para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cUtilizaViaUnica for igual a "S".<br><br>Utilize a tag "cCodigo" do método "ListarTipoUtilizacao" da API<br>/api/v1/servicos/tipoutilizacao/ para obter essa informação.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+</div>
+<div class="col-md-3">
+<div id="affix-menu" data-spy="affix" data-offset-top="294" class="affix-top">
+<h2>Métodos</h2>
+<nav id="index" class="hidden-print hidden-xs hidden-sm">
+<ul class="nav">
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#AlterarCadastroServico">AlterarCadastroServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#AssociarCodIntServico">AssociarCodIntServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#ConsultarCadastroServico">ConsultarCadastroServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#ExcluirCadastroServico">ExcluirCadastroServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#IncluirCadastroServico">IncluirCadastroServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#ListarCadastroServico">ListarCadastroServico</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/servico/#UpsertCadastroServico">UpsertCadastroServico</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+</div></body></html>

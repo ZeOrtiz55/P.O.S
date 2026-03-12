@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ordem de Serviço</title>
+    <style>
+        @page { margin: 0.5cm; size: A4; }
+        body { font-family: 'Helvetica', Arial, sans-serif; font-size: 10pt; color: #333; margin: 0; padding: 10px; line-height: 1.3; }
+        :root { --primary: #2563EB; --primary-light: #EFF6FF; --border: #BFDBFE; }
+        table { width: 100%; border-collapse: collapse; }
+        td, th { vertical-align: top; padding: 4px; }
+        .header { border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 20px; }
+        .company-name { font-size: 18pt; font-weight: 900; text-transform: uppercase; color: #111; margin: 0; }
+        .company-sub { font-size: 9pt; color: #666; }
+        .os-box { text-align: right; }
+        .os-title { font-size: 12pt; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+        .os-number { font-size: 22pt; font-weight: 900; color: #333; margin: 2px 0; }
+        .os-date { font-size: 9pt; color: #777; }
+        .section-header { font-size: 9pt; font-weight: 700; text-transform: uppercase; color: var(--primary); border-bottom: 1px solid var(--border); margin-top: 15px; margin-bottom: 5px; padding-bottom: 2px; }
+        .lbl { font-size: 7pt; color: #888; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1px; }
+        .val { font-size: 10pt; color: #000; font-weight: 500; margin-bottom: 4px; }
+        .val-lg { font-size: 11pt; font-weight: 700; color: #000; }
+        .equip-box { background: var(--primary-light); padding: 8px; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 10px; }
+        .desc-box { background: #f9f9f9; padding: 10px; border: 1px solid #eee; min-height: 120px; border-radius: 4px; font-size: 10pt; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace; }
+        .cost-table th { text-align: left; font-size: 8pt; color: #555; text-transform: uppercase; border-bottom: 1px solid #ccc; padding: 5px; background: #eee; }
+        .cost-table td { padding: 8px 5px; border-bottom: 1px solid #eee; font-size: 10pt; }
+        .total-area { margin-top: 15px; padding: 10px; background-color: var(--primary-light); border: 1px solid var(--border); text-align: right; border-radius: 4px; }
+        .total-lbl { font-size: 10pt; color: var(--primary); font-weight: bold; margin-right: 10px; }
+        .total-val { font-size: 16pt; font-weight: 900; color: var(--primary); vertical-align: middle; }
+        .footer { margin-top: 50px; border-top: 1px solid #eee; padding-top: 10px; font-size: 8pt; color: #aaa; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <table class="header">
+        <tr>
+            <td width="65%">
+                <div class="company-name">Nova Tratores</div>
+                <div class="company-sub">Máquinas Agrícolas Ltda<br>CNPJ: 31.463.139/0001-03</div>
+            </td>
+            <td width="35%" class="os-box">
+                <div class="os-title">Ordem de Serviço</div>
+                <div class="os-number">Nº <?= os.idOrdem ?></div>
+                <div class="os-date">EMISSÃO: <?= os.data ?></div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="section-header">Informações do Cliente</div>
+    <table>
+        <tr>
+            <td width="60%"><span class="lbl">Cliente / Razão Social</span><div class="val-lg"><?= os.nomeCliente ?></div></td>
+            <td width="40%"><span class="lbl">CPF / CNPJ</span><div class="val"><?= os.cpfCliente ?></div></td>
+        </tr>
+        <tr>
+            <td><span class="lbl">Endereço</span><div class="val"><?= os.enderecoCliente ?></div></td>
+            <td><span class="lbl">Telefone / Contato</span><div class="val"><?= os.telefoneCliente ? os.telefoneCliente : '-' ?></div></td>
+        </tr>
+    </table>
+
+    <div class="section-header">Dados do Serviço</div>
+    <div class="equip-box">
+        <table>
+            <tr>
+                <td width="50%"><span class="lbl">Projeto / Equipamento</span><div class="val-lg" style="color:var(--primary);"><?= os.projeto ? os.projeto : 'Não informado' ?></div></td>
+                <td width="25%"><span class="lbl">Técnico Principal</span><div class="val"><?= os.tecnicoResponsavel ?></div></td>
+                <td width="25%"><span class="lbl">Técnico Auxiliar</span><div class="val"><?= os.tecnico2 ? os.tecnico2 : '-' ?></div></td>
+            </tr>
+            <tr>
+                <td width="50%"><span class="lbl">Tipo de Atendimento</span><div class="val" style="font-weight:bold;"><?= os.tipoServico ?></div></td>
+                <td colspan="2"><span class="lbl">Revisão Programada</span><div class="val"><?= os.revisao ? os.revisao : '-' ?></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div style="margin-top:10px;">
+        <span class="lbl">Descrição Detalhada do Serviço</span>
+        <div class="desc-box"><?= os.servSolicitado ? os.servSolicitado : 'Nenhum registro.' ?></div>
+    </div>
+
+    <div class="section-header">Resumo Financeiro</div>
+    <table class="cost-table">
+        <thead>
+            <tr>
+                <th width="50%">Descrição</th>
+                <th width="15%" style="text-align:center">Qtd.</th>
+                <th width="15%" style="text-align:right">Unit.</th>
+                <th width="20%" style="text-align:right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Mão de Obra (Horas Técnicas)</td>
+                <td style="text-align:center"><?= os.qtdHoras ?> h</td>
+                <td style="text-align:right">R$ <?= valorHora.toFixed(2) ?></td>
+                <td style="text-align:right; font-weight:bold;">R$ <?= os.valorHoras ?></td>
+            </tr>
+            <tr>
+                <td>Deslocamento (KM)</td>
+                <td style="text-align:center"><?= os.qtdKm ?> km</td>
+                <td style="text-align:right">R$ <?= valorKm.toFixed(2) ?></td>
+                <td style="text-align:right; font-weight:bold;">R$ <?= os.valorKm ?></td>
+            </tr>
+            <? if (os.valorReq && os.valorReq != "0.00") { ?>
+            <tr>
+                <td>Requisições / Serviços Externos</td>
+                <td style="text-align:center">1</td>
+                <td style="text-align:right">-</td>
+                <td style="text-align:right; font-weight:bold;">R$ <?= os.valorReq ?></td>
+            </tr>
+            <? } ?>
+        </tbody>
+    </table>
+
+    <? if (os.produtos && os.produtos.length > 0) { ?>
+        <div style="margin-top:15px;">
+            <div style="font-size:9pt; font-weight:bold; color:var(--primary); margin-bottom:5px; text-transform:uppercase;">Peças e Materiais Utilizados</div>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th width="50%">Descrição da Peça</th>
+                        <th width="15%" style="text-align:center">Qtd.</th>
+                        <th width="15%" style="text-align:right">Unit.</th>
+                        <th width="20%" style="text-align:right">Total Peça</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? for (var i = 0; i < os.produtos.length; i++) { ?>
+                    <tr>
+                        <td style="font-size:9pt;"><?= os.produtos[i].descricao ?></td>
+                        <td style="text-align:center"><?= os.produtos[i].qtde ?>x</td>
+                        <td style="text-align:right">R$ <?= os.produtos[i].valor.toFixed(2) ?></td>
+                        <td style="text-align:right; font-weight:bold;">R$ <?= (os.produtos[i].qtde * os.produtos[i].valor).toFixed(2) ?></td>
+                    </tr>
+                    <? } ?>
+                </tbody>
+            </table>
+        </div>
+    <? } ?>
+
+    <div class="total-area">
+        <span class="total-lbl">TOTAL GERAL DA O.S.</span>
+        <span class="total-val">R$ <?= os.valorTotal ?></span>
+    </div>
+
+    <div class="footer">Gerado automaticamente em <?= new Date().toLocaleString('pt-BR') ?></div>
+</body>
+</html>

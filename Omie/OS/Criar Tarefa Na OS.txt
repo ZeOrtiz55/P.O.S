@@ -1,0 +1,127 @@
+/**
+ * =========================================================================
+ * MÓDULO DE CRIAÇÃO DE OS (OMIE API)
+ * =========================================================================
+ */
+
+/**
+ * Cria uma nova Ordem de Serviço no Omie.
+ * * @param {number} idCliente - ID do cliente (nCodCli)
+ * @param {number} idServico - ID do serviço (nCodServico)
+ * @param {number} valorUnitario - Valor do serviço
+ * @param {number} quantidade - Quantidade (padrão 1)
+ * @param {number} idContaCorrente - ID da conta (nCodCC)
+ * @param {string} dataPrevisao - Data no formato "dd/mm/aaaa"
+ * @return {Object} Resultado {sucesso, numeroOS, idOS, erro}
+ */
+function criarNovaOrdemServico(idCliente, idServico, valorUnitario, quantidade, idContaCorrente, dataPrevisao) {
+  
+  // Gera código único para evitar duplicidade na API
+  const codIntegracao = "API-" + new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
+
+  // ESTRUTURA VALIDADA (BASEADA NO SUCESSO DA OS 431)
+  const novaOS = {
+    "Cabecalho": {
+      "cCodIntOS": codIntegracao,
+      "cEtapa": "10",               // 10 = Etapa Inicial
+      "dDtPrevisao": dataPrevisao,
+      "nCodCli": idCliente,
+      "nQtdeParc": 1
+    },
+    "InformacoesAdicionais": {
+      "cCodCateg": "1.01.02",       // Categoria de Receita de Serviços
+      "cDadosAdicNF": "Gerado via Google Apps Script",
+      "nCodCC": idContaCorrente
+    },
+    "ServicosPrestados": [
+      {
+        "nCodServico": idServico,
+        "nQtde": quantidade,
+        "nValUnit": valorUnitario
+      }
+    ],
+    "Email": {
+      "cEnvBoleto": "N",
+      "cEnvLink": "N",
+      "cEnviarPara": ""
+    }
+  };
+
+  return enviarParaApiServicos(novaOS);
+}
+
+/**
+ * Função Auxiliar: Envia o JSON para a API
+ */
+function enviarParaApiServicos(dadosOS) {
+  const url = "https://app.omie.com.br/api/v1/servicos/os/";
+  const { appKey, appSecret } = getCredentials();
+
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "IncluirOS",
+    param: [dadosOS]
+  };
+
+  const options = {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, options);
+    const json = JSON.parse(response.getContentText());
+
+    if (json.faultstring) {
+      return { sucesso: false, erro: json.faultstring };
+    }
+
+    return {
+      sucesso: true,
+      numeroOS: json.cNumOS,
+      idOS: json.nCodOS,
+      status: json.cStatus
+    };
+
+  } catch (e) {
+    return { sucesso: false, erro: e.toString() };
+  }
+}
+
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}
+
+/**
+ * EXEMPLO DE USO (COMO CHAMAR A FUNÇÃO ACIMA)
+ */
+function testeExecucao() {
+  // IDs que descobrimos hoje
+  const CLIENTE_TESTE = 2202193639;
+  const CONTA_TESTE = 1969919780;
+  const SERVICO_TESTE = 1980428676;
+
+  console.log("Iniciando teste de função modular...");
+
+  // Chama a função principal passando os dados
+  const resultado = criarNovaOrdemServico(
+    CLIENTE_TESTE,    // Cliente
+    SERVICO_TESTE,    // Serviço
+    200.00,           // Valor (Ex: 200 reais)
+    1,                // Quantidade
+    CONTA_TESTE,      // Conta Corrente
+    "30/12/2025"      // Data Previsão
+  );
+
+  if (resultado.sucesso) {
+    console.log(`✅ OS Criada! Número: ${resultado.numeroOS}`);
+  } else {
+    console.error(`❌ Erro: ${resultado.erro}`);
+  }
+}

@@ -1,0 +1,1847 @@
+
+<!-- saved from url=(0057)https://app.omie.com.br/api/v1/servicos/os/#TrocarEtapaOS -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body style=""><nav class="navbar navbar-expand-lg bg-azul">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="https://developer.omie.com.br/">
+            <img class="lozad img-logo" data-src="https://static.omie.com.br/images/logo/logo-omie-topo.png" src="./OrdemServico_files/logo-omie-topo.png" data-loaded="true">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://developer.omie.com.br/my-apps/"> Aplicativos </a>
+                </li>
+                <li class="nav-item ">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://developer.omie.com.br/service-list/">
+                        Lista das API's
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <span class="borda-hover"></span>
+                    <a class="nav-link" href="https://ajuda.omie.com.br/pt-BR/collections/3045828-apis" target="_blank"> Ajuda </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<title>OrdemServico</title>
+<style type="text/css" media="all">
+  [id] { scroll-margin-top: 68px; }
+</style>
+<script src="./OrdemServico_files/jquery-1.11.0.min.js.download"></script>
+<script src="./OrdemServico_files/omie-compat-v2.min.js.download"></script>
+<script src="./OrdemServico_files/developer.js.download"></script>
+<link rel="stylesheet" href="./OrdemServico_files/bootstrap.min.css" async="">
+<link href="./OrdemServico_files/site.css" media="all" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./OrdemServico_files/developer.css" async="">
+
+
+<div class="jumbotron banner bg-azul">
+<div class="container">
+<img src="./OrdemServico_files/seta-azuis.png" alt="" class="img-setas">
+<div class="row align-items-center">
+<div class="col-12">
+<h1>OrdemServico</h1>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="https://app.omie.com.br/api/v1/servicos/os/#section-endpoint" aria-controls="section-endpoint" role="tab" data-toggle="tab">Endpoint</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/os/#section-wsdl" aria-controls="section-wsdl" role="tab" data-toggle="tab">WSDL</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/os/#section-php-soap" aria-controls="section-php-soap" role="tab" data-toggle="tab">PHP SOAP</a></li>
+  <li role="presentation" class="pull-right"><a href="https://app.omie.com.br/api/v1/servicos/os/#section-json" aria-controls="section-json" role="tab" data-toggle="tab">JSON</a></li>
+</ul>
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="section-endpoint">
+    <h4>Endpoint URI</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/os/"><pre><code>https://app.omie.com.br/api/v1/servicos/os/</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-wsdl">
+    <h4>WSDL URI</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/os/?WSDL"><pre><code>https://app.omie.com.br/api/v1/servicos/os/?WSDL</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-php-soap">
+    <h4>PHP SOAP client download</h4>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/os/?PHPSOAPCLIENT" "=""><pre><code>https://app.omie.com.br/api/v1/servicos/os/?PHPSOAPCLIENT</code></pre></a>
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="section-json">
+    <h4>JSON client download URI</h4>
+    <h5>PHP</h5>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/os/?PHPJSONCLIENT"><pre><code>https://app.omie.com.br/api/v1/servicos/os/?PHPJSONCLIENT</code></pre></a>
+    <h5>JavaScript (recomendado para uso apenas do lado do servidor)</h5>
+    <a class="highlight" href="https://app.omie.com.br/api/v1/servicos/os/?JSJSONCLIENT"><pre><code>https://app.omie.com.br/api/v1/servicos/os/?JSJSONCLIENT</code></pre></a>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-9">
+<h2>Métodos</h2>
+<p>Veja abaixo a documentação de cada método disponível para este serviço.</p>
+<div id="AlterarOS" class="methodItem">
+<h3 class="method-name">AlterarOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osCadastro">osCadastro</a></td>
+<td class="method-parameter-name">osCadastro</td><td class="method-parameter-docs"><div class="first">Cadastro de Ordem de Serviços</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osStatus"><span class="lightBlue">osStatus</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"Cabecalho":</span> {
+    <span class="key">"nCodOS":</span> <span class="string">"1773065077"</span>,
+    <span class="key">"cCodParc":</span> <span class="string">"999"</span>,
+    <span class="key">"cEtapa":</span> <span class="string">"20"</span>,
+    <span class="key">"dDtPrevisao":</span> <span class="string">"09/03/2026"</span>,
+    <span class="key">"nCodCli":</span> <span class="number">2485994</span>,
+    <span class="key">"nQtdeParc":</span> <span class="number">7</span>
+  },
+  <span class="key">"Departamentos":</span> [],
+  <span class="key">"Email":</span> {
+    <span class="key">"cEnvBoleto":</span> <span class="string">"N"</span>,
+    <span class="key">"cEnvLink":</span> <span class="string">"N"</span>,
+    <span class="key">"cEnviarPara":</span> <span class="string">"teste@omie.com.br"</span>
+  },
+  <span class="key">"InformacoesAdicionais":</span> {
+    <span class="key">"cCidPrestServ":</span> <span class="string">"SAO PAULO (SP)"</span>,
+    <span class="key">"cCodCateg":</span> <span class="string">"1.01.02"</span>,
+    <span class="key">"cDadosAdicNF":</span> <span class="string">"OS incluida via API de teste 42533"</span>,
+    <span class="key">"nCodCC":</span> <span class="number">11850365</span>
+  },
+  <span class="key">"ServicosPrestados":</span> [
+    {
+      <span class="key">"cCodServLC116":</span> <span class="string">"7.07"</span>,
+      <span class="key">"cCodServMun":</span> <span class="string">"01015"</span>,
+      <span class="key">"cDadosAdicItem":</span> <span class="string">"Serviços prestados"</span>,
+      <span class="key">"cDescServ":</span> <span class="string">"Serviço prestado 001"</span>,
+      <span class="key">"cRetemISS":</span> <span class="string">"N"</span>,
+      <span class="key">"cTribServ":</span> <span class="string">"01"</span>,
+      <span class="key">"impostos":</span> {
+        <span class="key">"cRetemIRRF":</span> <span class="string">"S"</span>,
+        <span class="key">"cRetemPIS":</span> <span class="string">"S"</span>,
+        <span class="key">"nAliqCOFINS":</span> <span class="number">0</span>,
+        <span class="key">"nAliqCSLL":</span> <span class="number">0</span>,
+        <span class="key">"nAliqIRRF":</span> <span class="number">15</span>,
+        <span class="key">"nAliqISS":</span> <span class="number">3</span>,
+        <span class="key">"nAliqPIS":</span> <span class="number">4.5</span>
+      },
+      <span class="key">"nQtde":</span> <span class="number">3</span>,
+      <span class="key">"nValUnit":</span> <span class="number">1000</span>
+    },
+    {
+      <span class="key">"impostos":</span> {
+        <span class="key">"cRetemIRRF":</span> <span class="string">"S"</span>,
+        <span class="key">"cRetemPIS":</span> <span class="string">"S"</span>,
+        <span class="key">"nAliqIRRF":</span> <span class="number">15</span>,
+        <span class="key">"nAliqISS":</span> <span class="number">3</span>,
+        <span class="key">"nAliqPIS":</span> <span class="number">4.5</span>
+      },
+      <span class="key">"nCodServico":</span> <span class="number">2342423</span>,
+      <span class="key">"nQtde":</span> <span class="number">12</span>,
+      <span class="key">"nValUnit":</span> <span class="number">35</span>
+    }
+  ]
+}</pre>
+<button class="btn btn-success method-example" data-method="AlterarOS" data-example="%7B++++%22Cabecalho%22%3A+%7B++++++++%22nCodOS%22%3A+%221773065077%22%2C++++++++%22cCodParc%22%3A+%22999%22%2C++++++++%22cEtapa%22%3A+%2220%22%2C++++++++%22dDtPrevisao%22%3A+%2209%2F03%2F2026%22%2C++++++++%22nCodCli%22%3A+2485994%2C++++++++%22nQtdeParc%22%3A+7++++%7D%2C++++%22Departamentos%22%3A+%5B%5D%2C++++%22Email%22%3A+%7B++++++++%22cEnvBoleto%22%3A+%22N%22%2C++++++++%22cEnvLink%22%3A+%22N%22%2C++++++++%22cEnviarPara%22%3A+%22teste%40omie.com.br%22++++%7D%2C++++%22InformacoesAdicionais%22%3A+%7B++++++++%22cCidPrestServ%22%3A+%22SAO+PAULO+%28SP%29%22%2C++++++++%22cCodCateg%22%3A+%221.01.02%22%2C++++++++%22cDadosAdicNF%22%3A+%22OS+incluida+via+API+de+teste+42533%22%2C++++++++%22nCodCC%22%3A+11850365++++%7D%2C++++%22ServicosPrestados%22%3A+%5B++++++++%7B++++++++++++%22cCodServLC116%22%3A+%227.07%22%2C++++++++++++%22cCodServMun%22%3A+%2201015%22%2C++++++++++++%22cDadosAdicItem%22%3A+%22Servi%E7os+prestados%22%2C++++++++++++%22cDescServ%22%3A+%22Servi%E7o+prestado+001%22%2C++++++++++++%22cRetemISS%22%3A+%22N%22%2C++++++++++++%22cTribServ%22%3A+%2201%22%2C++++++++++++%22impostos%22%3A+%7B++++++++++++++++%22cRetemIRRF%22%3A+%22S%22%2C++++++++++++++++%22cRetemPIS%22%3A+%22S%22%2C++++++++++++++++%22nAliqCOFINS%22%3A+0%2C++++++++++++++++%22nAliqCSLL%22%3A+0%2C++++++++++++++++%22nAliqIRRF%22%3A+15%2C++++++++++++++++%22nAliqISS%22%3A+3%2C++++++++++++++++%22nAliqPIS%22%3A+4.5++++++++++++%7D%2C++++++++++++%22nQtde%22%3A+3%2C++++++++++++%22nValUnit%22%3A+1000++++++++%7D%2C++++++++%7B++++++++++++%22impostos%22%3A+%7B++++++++++++++++%22cRetemIRRF%22%3A+%22S%22%2C++++++++++++++++%22cRetemPIS%22%3A+%22S%22%2C++++++++++++++++%22nAliqIRRF%22%3A+15%2C++++++++++++++++%22nAliqISS%22%3A+3%2C++++++++++++++++%22nAliqPIS%22%3A+4.5++++++++++++%7D%2C++++++++++++%22nCodServico%22%3A+2342423%2C++++++++++++%22nQtde%22%3A+12%2C++++++++++++%22nValUnit%22%3A+35++++++++%7D++++%5D%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ConsultarOS" class="methodItem">
+<h3 class="method-name">ConsultarOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osChave">osChave</a></td>
+<td class="method-parameter-name">osChave</td><td class="method-parameter-docs"><div class="first">Chave de Pesquisa da Ordem de Serviço</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osCadastro"><span class="lightBlue">osCadastro</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntOS":</span> <span class="string">""</span>,
+  <span class="key">"nCodOS":</span> <span class="number">0</span>,
+  <span class="key">"cNumOS":</span> <span class="string">""</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ConsultarOS" data-example="%7B++%22cCodIntOS%22%3A+%22%22%2C++%22nCodOS%22%3A+0%2C++%22cNumOS%22%3A+%22%22%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ExcluirOS" class="methodItem">
+<h3 class="method-name">ExcluirOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osChave">osChave</a></td>
+<td class="method-parameter-name">osChave</td><td class="method-parameter-docs"><div class="first">Chave de Pesquisa da Ordem de Serviço</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osStatus"><span class="lightBlue">osStatus</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntOS":</span> <span class="string">""</span>,
+  <span class="key">"nCodOS":</span> <span class="number">0</span>,
+  <span class="key">"cNumOS":</span> <span class="string">""</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ExcluirOS" data-example="%7B++%22cCodIntOS%22%3A+%22%22%2C++%22nCodOS%22%3A+0%2C++%22cNumOS%22%3A+%22%22%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="IncluirOS" class="methodItem">
+<h3 class="method-name">IncluirOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osCadastro">osCadastro</a></td>
+<td class="method-parameter-name">osCadastro</td><td class="method-parameter-docs"><div class="first">Cadastro de Ordem de Serviços</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osStatus"><span class="lightBlue">osStatus</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"Cabecalho":</span> {
+    <span class="key">"cCodIntOS":</span> <span class="string">"1773065077"</span>,
+    <span class="key">"cCodParc":</span> <span class="string">"999"</span>,
+    <span class="key">"cEtapa":</span> <span class="string">"20"</span>,
+    <span class="key">"dDtPrevisao":</span> <span class="string">"09/03/2026"</span>,
+    <span class="key">"nCodCli":</span> <span class="number">2485994</span>,
+    <span class="key">"nQtdeParc":</span> <span class="number">7</span>
+  },
+  <span class="key">"Departamentos":</span> [],
+  <span class="key">"Email":</span> {
+    <span class="key">"cEnvBoleto":</span> <span class="string">"N"</span>,
+    <span class="key">"cEnvLink":</span> <span class="string">"N"</span>,
+    <span class="key">"cEnviarPara":</span> <span class="string">"teste@omie.com.br"</span>
+  },
+  <span class="key">"InformacoesAdicionais":</span> {
+    <span class="key">"cCidPrestServ":</span> <span class="string">"SAO PAULO (SP)"</span>,
+    <span class="key">"cCodCateg":</span> <span class="string">"1.01.02"</span>,
+    <span class="key">"cDadosAdicNF":</span> <span class="string">"OS incluida via API de teste 57269"</span>,
+    <span class="key">"nCodCC":</span> <span class="number">11850365</span>
+  },
+  <span class="key">"ServicosPrestados":</span> [
+    {
+      <span class="key">"cCodServLC116":</span> <span class="string">"7.07"</span>,
+      <span class="key">"cCodServMun":</span> <span class="string">"01015"</span>,
+      <span class="key">"cDadosAdicItem":</span> <span class="string">"Serviços prestados"</span>,
+      <span class="key">"cDescServ":</span> <span class="string">"Serviço prestado 001"</span>,
+      <span class="key">"cRetemISS":</span> <span class="string">"N"</span>,
+      <span class="key">"cTribServ":</span> <span class="string">"01"</span>,
+      <span class="key">"impostos":</span> {
+        <span class="key">"cRetemIRRF":</span> <span class="string">"S"</span>,
+        <span class="key">"cRetemPIS":</span> <span class="string">"S"</span>,
+        <span class="key">"nAliqCOFINS":</span> <span class="number">0</span>,
+        <span class="key">"nAliqCSLL":</span> <span class="number">0</span>,
+        <span class="key">"nAliqIRRF":</span> <span class="number">15</span>,
+        <span class="key">"nAliqISS":</span> <span class="number">3</span>,
+        <span class="key">"nAliqPIS":</span> <span class="number">4.5</span>
+      },
+      <span class="key">"nQtde":</span> <span class="number">3</span>,
+      <span class="key">"nValUnit":</span> <span class="number">1000</span>
+    },
+    {
+      <span class="key">"impostos":</span> {
+        <span class="key">"cRetemIRRF":</span> <span class="string">"S"</span>,
+        <span class="key">"cRetemPIS":</span> <span class="string">"S"</span>,
+        <span class="key">"nAliqIRRF":</span> <span class="number">15</span>,
+        <span class="key">"nAliqISS":</span> <span class="number">3</span>,
+        <span class="key">"nAliqPIS":</span> <span class="number">4.5</span>
+      },
+      <span class="key">"nCodServico":</span> <span class="number">2342423</span>,
+      <span class="key">"nQtde":</span> <span class="number">12</span>,
+      <span class="key">"nValUnit":</span> <span class="number">35</span>
+    }
+  ]
+}</pre>
+<button class="btn btn-success method-example" data-method="IncluirOS" data-example="%7B++++%22Cabecalho%22%3A+%7B++++++++%22cCodIntOS%22%3A+%221773065077%22%2C++++++++%22cCodParc%22%3A+%22999%22%2C++++++++%22cEtapa%22%3A+%2220%22%2C++++++++%22dDtPrevisao%22%3A+%2209%2F03%2F2026%22%2C++++++++%22nCodCli%22%3A+2485994%2C++++++++%22nQtdeParc%22%3A+7++++%7D%2C++++%22Departamentos%22%3A+%5B%5D%2C++++%22Email%22%3A+%7B++++++++%22cEnvBoleto%22%3A+%22N%22%2C++++++++%22cEnvLink%22%3A+%22N%22%2C++++++++%22cEnviarPara%22%3A+%22teste%40omie.com.br%22++++%7D%2C++++%22InformacoesAdicionais%22%3A+%7B++++++++%22cCidPrestServ%22%3A+%22SAO+PAULO+%28SP%29%22%2C++++++++%22cCodCateg%22%3A+%221.01.02%22%2C++++++++%22cDadosAdicNF%22%3A+%22OS+incluida+via+API+de+teste+57269%22%2C++++++++%22nCodCC%22%3A+11850365++++%7D%2C++++%22ServicosPrestados%22%3A+%5B++++++++%7B++++++++++++%22cCodServLC116%22%3A+%227.07%22%2C++++++++++++%22cCodServMun%22%3A+%2201015%22%2C++++++++++++%22cDadosAdicItem%22%3A+%22Servi%E7os+prestados%22%2C++++++++++++%22cDescServ%22%3A+%22Servi%E7o+prestado+001%22%2C++++++++++++%22cRetemISS%22%3A+%22N%22%2C++++++++++++%22cTribServ%22%3A+%2201%22%2C++++++++++++%22impostos%22%3A+%7B++++++++++++++++%22cRetemIRRF%22%3A+%22S%22%2C++++++++++++++++%22cRetemPIS%22%3A+%22S%22%2C++++++++++++++++%22nAliqCOFINS%22%3A+0%2C++++++++++++++++%22nAliqCSLL%22%3A+0%2C++++++++++++++++%22nAliqIRRF%22%3A+15%2C++++++++++++++++%22nAliqISS%22%3A+3%2C++++++++++++++++%22nAliqPIS%22%3A+4.5++++++++++++%7D%2C++++++++++++%22nQtde%22%3A+3%2C++++++++++++%22nValUnit%22%3A+1000++++++++%7D%2C++++++++%7B++++++++++++%22impostos%22%3A+%7B++++++++++++++++%22cRetemIRRF%22%3A+%22S%22%2C++++++++++++++++%22cRetemPIS%22%3A+%22S%22%2C++++++++++++++++%22nAliqIRRF%22%3A+15%2C++++++++++++++++%22nAliqISS%22%3A+3%2C++++++++++++++++%22nAliqPIS%22%3A+4.5++++++++++++%7D%2C++++++++++++%22nCodServico%22%3A+2342423%2C++++++++++++%22nQtde%22%3A+12%2C++++++++++++%22nValUnit%22%3A+35++++++++%7D++++%5D%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="ListarOS" class="methodItem">
+<h3 class="method-name">ListarOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osListarRequest">osListarRequest</a></td>
+<td class="method-parameter-name">osListarRequest</td><td class="method-parameter-docs"><div class="first">Solicitação de Listagem de Ordens de Serviço</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osListarResponse"><span class="lightBlue">osListarResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"pagina":</span> <span class="number">1</span>,
+  <span class="key">"registros_por_pagina":</span> <span class="number">50</span>,
+  <span class="key">"apenas_importado_api":</span> <span class="string">"N"</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="ListarOS" data-example="%7B++%22pagina%22%3A+1%2C++%22registros_por_pagina%22%3A+50%2C++%22apenas_importado_api%22%3A+%22N%22%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="StatusOS" class="methodItem">
+<h3 class="method-name">StatusOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osStatusRequest">osStatusRequest</a></td>
+<td class="method-parameter-name">osStatusRequest</td><td class="method-parameter-docs"><div class="first">Solicitação de Status da Ordem de Serviço</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osStatusResponse"><span class="lightBlue">osStatusResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntOS":</span> <span class="string">""</span>,
+  <span class="key">"nCodOS":</span> <span class="number">0</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="StatusOS" data-example="%7B++%22cCodIntOS%22%3A+%22%22%2C++%22nCodOS%22%3A+0%7D">Teste agora mesmo</button>
+</div>
+</div>
+<div id="TrocarEtapaOS" class="methodItem">
+<h3 class="method-name">TrocarEtapaOS</h3>
+<p>
+
+</p>
+<div class="panel panel-default method">
+<div class="panel-heading"> Parâmetros:
+</div>
+<table class="table table-condensed table-hover">
+<tbody><tr>
+<td class="">&nbsp;</td>
+<td class="method-parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osTrocarEtapaRequest">osTrocarEtapaRequest</a></td>
+<td class="method-parameter-name">osTrocarEtapaRequest</td><td class="method-parameter-docs"><div class="first">Solicitação de troca de etapa da Ordem de Serviço.</div></td>
+</tr>
+</tbody></table>
+<div class="panel-footer">
+Retorno <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osTrocarEtapaResponse"><span class="lightBlue">osTrocarEtapaResponse</span></a></span>: 
+</div>
+</div>
+<div class="method-example-area">
+<h5>Exemplo:</h5>
+<pre class="method-example-code">{
+  <span class="key">"cCodIntOS":</span> <span class="string">""</span>,
+  <span class="key">"nCodOS":</span> <span class="number">0</span>,
+  <span class="key">"cNumOS":</span> <span class="string">""</span>,
+  <span class="key">"cEtapa":</span> <span class="string">""</span>
+}</pre>
+<button class="btn btn-success method-example" data-method="TrocarEtapaOS" data-example="%7B++%22cCodIntOS%22%3A+%22%22%2C++%22nCodOS%22%3A+0%2C++%22cNumOS%22%3A+%22%22%2C++%22cEtapa%22%3A+%22%22%7D">Teste agora mesmo</button>
+</div>
+</div>
+<h2>Tipos Complexos</h2>
+<div class="complexTypeItem">
+<a name="Cabecalho"></a>
+<h3>Cabecalho</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodIntCli</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Cliente</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodCli</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Cliente</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtPrevisao</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Previsão</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEtapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Código da etapa do processo, sendo:</div><div class="more"><a href="javascript:void(0)">+</a><div>10 - Primeira coluna<br>20 - Segunda coluna<br>30 - Terceira coluna<br>40 - Quarta coluna<br>50 - Faturar</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodVend</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Vendedor</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQtdeParc</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Quantidade de Parcelas</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodParc</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Código da parcela/Condição de pagamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Obrigatório.<br><br>Utilize a tag "nCodigo" do método "ListarFormasPagVendas" da API<br>/api/v1/produtos/formaspagvendas/<br>para obter essa informação.<br><br>O código "999" é o único que permite uma definição de forma de pagamento customizada. Caso você escolha essa opção, deve também informar a tag "qtde_parcelas" e a estrutura "lista_parcelas".<br><br>Alguns dos valores disponíveis são:<br><br>"000" - A Vista                                                     <br>"A03" - Para 3 dias                                                 <br>"A05" - Para 5 dias                                                 <br>"A07" - Para 7 dias                                                 <br>"A08" - Para 8 dias                                                 <br>"A09" - Para 9 dias                                                 <br>"A10" - Para 10 dias                                                <br>"A13" - Para 13 dias                                                <br>"A14" - Para 14 dias                                                <br>"A15" - Para 15 dias                                                <br>"A17" - Para 17 dias                                                <br>"A20" - Para 20 dias                                                <br>"A21" - Para 21 dias                                                <br>"A25" - Para 25 dias                                                <br>"A26" - Para 26 dias                                                <br>"A28" - Para 28 dias                                                <br>"A35" - Para 35 dias                                                <br>"A36" - Para 36 dias                                                <br>"A40" - Para 40 dias                                                <br>"A42" - Para 42 dias                                                <br>"A45" - Para 45 dias                                                <br>"A50" - Para 50 dias                                                <br>"A56" - Para 56 dias                                                <br>"A60" - Para 60 dias                                                <br>"A70" - Para 70 dias                                                <br>"A75" - Para 75 dias                                                <br>"A90" - Para 90 dias                                                <br>"A98" - Para 98 dias                                                <br>"B20" - Para 120 dias                                               <br>"001" - 1 Parcela (para 30 dias)                                    <br>"002" - 2 Parcelas                                                  <br>"003" - 3 Parcelas                                                  <br>"004" - 4 Parcelas                                                  <br>"005" - 5 Parcelas                                                  <br>"006" - 6 Parcelas                                                  <br>"007" - 7 Parcelas                                                  <br>"010" - 10 Parcelas                                                 <br>"012" - 12 Parcelas                                                 <br>"024" - 24 Parcelas                                                 <br>"036" - 36 Parcelas                                                 <br>"048" - 48 Parcelas                                                 <br>"S01" - 30/60                                                       <br>"S02" - 45/60                                                       <br>"S03" - 21/28/35                                                    <br>"S04" - 21/28/35/42                                                 <br>"S05" - 28/35/42                                                    <br>"S06" - 28/35/42/49                                                 <br>"S07" - 30/45/60/75/90                                              <br>"S08" - 25/56                                                       <br>"S09" - 30/45                                                       <br>"S10" - 28/56                                                       <br>"S11" - 10/30/60                                                    <br>"S12" - 15/30/60                                                    <br>"S13" - 28/35                                                       <br>"S14" - 7/14/21                                                     <br>"S15" - 10/30/60/90                                                 <br>"S16" - 60/90/120                                                   <br>"S17" - 45/60/90                                                    <br>"S18" - 30/60/90                                                    <br>"S19" - 14/21                                                       <br>"S20" - 7/14                                                        <br>"S21" - 14/21/28                                                    <br>"S22" - 45/75                                                       <br>"S23" - 30/45/60                                                    <br>"S24" - 3/20/40                                                     <br>"S25" - 30/60/90/120                                                <br>"S26" - 21/28                                                       <br>"S27" - a Vista/15                                                  <br>"S28" - a Vista/30                                                  <br>"S29" - a Vista/30/60                                               <br>"S30" - a Vista/30/60/90                                            <br>"S31" - a Vista/30/60/90/120/150                                    <br>"S41" - 28/42/56                                                    <br>"S32" - 15/45/75                                                    <br>"S33" - 14/28/42                                                    <br>"S34" - 14/21/28/35/42                                              <br>"S35" - 30/42/54/66/78/90                                           <br>"S36" - 14/21/28/35                                                 <br>"S37" - 28/42                                                       <br>"S38" - 30/45/60                                                    <br>"S39" - 35/42/49/56                                                 <br>"S40" - 28/42/56/70                                                 <br>"S42" - 30/40/50/60                                                 <br>"S43" - 30/50/70/90                                                 <br>"S44" - 14/28                                                       <br>"S45" - 45/60/75/90                                                 <br>"S46" - a Vista/30/60/90/120                                        <br>"S47" - a vista/20/40/60                                            <br>"S48" - 21/42                                                       <br>"S49" - 15/30/45                                                    <br>"S50" - 14/42                                                       <br>"S51" - 21/35                                                       <br>"S52" - 28/56/84                                                    <br>"S53" - 28/42/56/70/84                                              <br>"S54" - a Vista/30/45                                               <br>"S55" - 21/45                                                       <br>"S56" - a Vista/28                                                  <br>"S57" - a Vista/60/90                                               <br>"S58" - 35/45/55                                                    <br>"S59" - 28/35/42/56                                                 <br>"S60" - 30/45/60/75                                                 <br>"S61" - 28/35/42/49/56                                              <br>"S62" - 40/70/100                                                   <br>"S63" - 42/56                                                       <br>"S64" - a Vista/28/35                                               <br>"S65" - 35/42                                                       <br>"S66" - 20/40                                                       <br>"S67" - a Vista/28/35/42</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescParc</td>
+<td class="parameter-type">string<span class="parameter-lenght">30</span></td><td class="parameter-docs"><div class="first">Descrição da parcela.</div><div class="more"><a href="javascript:void(0)">+</a><div>Utilizado apenas para retorno do método "ConsultarOS".</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorTotal</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor total da Ordem de Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na inclusão ou alteração.<br>Campo calculado automaticamente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorTotalImpRet</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor Total de Impostos Retidos</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodCtr</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Contrato.</div><div class="more"><a href="javascript:void(0)">+</a><div>Ao informar esse campo será incluído ao contrato uma Ordem de Serviço adicional.<br><br>Utilizado somente na Inclusão/Alteração.<br><br>Utilize a tag "nCodCtr" do método "ListarContrato" da API<br>/api/v1/servicos/contrato/<br>para obter essa informação<br><br>preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="DeducoesIss"></a>
+<h3>DeducoesIss</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cFormaDeducao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Tipo de dedução. Informe 'P' para Percentual ou 'V' para Valor.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercDeducao</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual de dedução.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorDeducao</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor da Dedução.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoDeduducao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Tipo da Dedução. Informe  '1' para  Materiais ou 2 para Sub-Empreitada</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNFReferencia</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Nota Fiscal de Referência.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCnpjFornecedor</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">CPF ou CNPJ do Fornecedor</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorTotNfRef</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor total NF de Referência</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQuantMateriais</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Quantidade de Material</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescMateriais</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Descrição do material.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="DeducoesIssArray"></a>
+<h3>DeducoesIssArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#DeducoesIss"><span class="lightBlue">DeducoesIss</span></a></span></p>
+<p>Lista de DeducoesIss</p>
+</div>
+<div class="complexTypeItem">
+<a name="Departamentos"></a>
+<h3>Departamentos</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodDepto</td>
+<td class="parameter-type">string<span class="parameter-lenght">40</span></td><td class="parameter-docs"><div class="first">ID do Departamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Obrigatório.<br><br>Informação localizada na Aba "Departamentos" do Pedido de Venda.<br><br>Utilize a tag "codigo" do método "ListarDepatartamentos" da API<br>/api/v1/geral/departamentos/<br>para obter essa informação.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPerc</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual de Rateio.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Obrigatório.<br><br>Informação localizada na Aba "Departamentos" do Pedido de Venda.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValor</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do Rateio.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Obrigatório.<br><br>Informação localizada na Aba "Departamentos" do Pedido de Venda.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorFixo</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica que o valor foi fixado na distribuição do rateio.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Obrigatório.<br><br>Informar "S" ou "N".<br><br>Informação localizada na Aba "Departamentos" do Pedido de Venda.<br></div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="DepartamentosArray"></a>
+<h3>DepartamentosArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#Departamentos"><span class="lightBlue">Departamentos</span></a></span></p>
+<p>Lista de Departamentos</p>
+</div>
+<div class="complexTypeItem">
+<a name="Email"></a>
+<h3>Email</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cEnvRecibo</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Enviar um recibo de prestação de serviços (ao invés da NFS-e)</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEnvLink</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Enviar ao Cliente e-mail com o link do site da prefeitura para consultar  a NFSe emitida.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEnvBoleto</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Enviar ao cliente e-mail com os Boletos de Cobrança gerados pelo faturamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>É permitido somente o preenchimento de uma das tags "cEnvPix" ou "cEnvBoleto".</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEnvPix</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Enviar ao cliente e-mail com o PIX de Cobrança gerado pelo faturamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>É permitido somente o preenchimento de uma das tags "cEnvPix" ou "cEnvBoleto".</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEnviarPara</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Utilizar os seguintes endereços de e-mail</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEnvViaUnica</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Enviar ao cliente Via Única (Notas Fiscais Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser: <br>S - Sim<br>N - Não</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="InfoCadastro"></a>
+<h3>InfoCadastro</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCancelada</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">"S" para Ordem de Serviço cancelada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFaturada</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">"S" para Ordem de Serviço faturada com sucesso.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAmbiente</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Ambiente de emissão da NFS-e.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br><br>H - Homologação<br>P - Produção</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Inclusão da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora de inclusão da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">uInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Usuário da Inclusão.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Alteração da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora de Alteração da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">uAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Usuário da Alteração.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtFat</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Faturamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrFat</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora do Faturamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtCanc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Cancelamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrCanc</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora do Cancelamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cOrigem</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Origem da Ordem de Serviço</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="InformacoesAdicionais"></a>
+<h3>InformacoesAdicionais</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodCateg</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Categoria</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodCC</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Conta Corrente</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumPedido</td>
+<td class="parameter-type">string<span class="parameter-lenght">30</span></td><td class="parameter-docs"><div class="first">Número do Pedido do Cliente</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumContrato</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Número do Contrato de Venda</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cContato</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Contato</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDadosAdicNF</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Dados Adicionais da Nota Fiscal</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodObra</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Código da Obra</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodART</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código ART</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodProj</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Projeto</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCidPrestServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">40</span></td><td class="parameter-docs"><div class="first">Cidade da Prestação do Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDataRps</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da RPS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumRecibo</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Número do Recibo gerado.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado automaticamente. Se informado na inclusão será ignorado).</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="ListaRpsNfse"></a>
+<h3>ListaRpsNfse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nLote</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número do Lote de Envio da RPS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cStatusLote</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Código do status do lote enviado para a prefeitura.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br><br>001 - Aguardando envio para a prefeitura.<br>002 - Enviado para a prefeitura, aguardando processamento.<br>003 - Processado com erro.<br>004 - Processado com sucesso.<br>005 - Cancelado com sucesso.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cProtocolo</td>
+<td class="parameter-type">string<span class="parameter-lenght">50</span></td><td class="parameter-docs"><div class="first">Número do protocolo do envio do lote.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nRps</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Número do Recibo Provisório de Serviços (RPS).</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cStatusRps</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Código do status da RPS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br><br>001 - Aguardando envio para a prefeitura.<br>002 - Enviado para a prefeitura, aguardando processamento.<br>003 - Processado com erro.<br>004 - Processado com sucesso.<br>005 - Cancelado com sucesso.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nNfse</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Número da NFS-e gerada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodVerif</td>
+<td class="parameter-type">string<span class="parameter-lenght">50</span></td><td class="parameter-docs"><div class="first">Código de Verificação da NFS-e gerada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCNPJ</td>
+<td class="parameter-type">string<span class="parameter-lenght">14</span></td><td class="parameter-docs"><div class="first">CNPJ do Prestador</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cInscrMunicipal</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Inscrição Municipal do Prestador</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">mensagens</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#mensagensArray">mensagensArray</a></td><td class="parameter-docs"><div class="first">Mensagens de comunicação com a Prefeitura</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">xml_distr</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">XML de distribuição da NF-e</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">danfe</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para o DANFE da NF-e gerada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUrlNfse</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para obter a NFS-e na prefeitura.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUrlPdfDemo</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para obter o PDF do Demonstrativo da NFS-e.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUrlPdfDest</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para obter o PDF da nota do Destinatário.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUrlRps</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para obter a RPS.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="ListaRpsNfseArray"></a>
+<h3>ListaRpsNfseArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#ListaRpsNfse"><span class="lightBlue">ListaRpsNfse</span></a></span></p>
+<p>Lista de ListaRpsNfse</p>
+</div>
+<div class="complexTypeItem">
+<a name="Observacoes"></a>
+<h3>Observacoes</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cObsOS</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Observações da Ordem de Serviço. (Essas informação não serão exibidas na Nota Fiscal).</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="Parcelas"></a>
+<h3>Parcelas</h3>
+<p>Permite que o parcelamento seja realizado de forma manual.</p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nParcela</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número da Parcela. </div><div class="more"><a href="javascript:void(0)">+</a><div>Ex.: <br>1 para indicar a parcela 1, <br>2 para indicar a parcela 2.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtVenc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Vencimento da parcela.</div><div class="more"><a href="javascript:void(0)">+</a><div>Ex:<br>01/02/2016</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValor</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor da Parcela.</div><div class="more"><a href="javascript:void(0)">+</a><div>Ex:<br>100.23</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercentual</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual do valor da parcela.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nDias</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número de dias até o vencimento.</div><div class="more"><a href="javascript:void(0)">+</a><div>O preenchimento deste campo não é obrigatório.<br>Ex:<br>28 para vencimento para 28 dias.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">tipo_documento</td>
+<td class="parameter-type">string<span class="parameter-lenght">5</span></td><td class="parameter-docs"><div class="first">Tipo de Documento.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.<br><br>Pode ser:<br>13S   13o. Salário                                      <br>99999 Outros                                            <br>ACO   Acordo                                            <br>ACOB  Acordo - Boleto                                   <br>ACOT  Acordo - Transferência                            <br>ADI   Adiantamento                                      <br>ANT   Antecipação                                       <br>APL   Aplicação                                         <br>APO   Apólice                                           <br>APOR  Aporte                                            <br>ASS   Assinatura                                        <br>BIL   Bilhete                                           <br>BOL   Boleto                                            <br>BOLV  Boleto à Vista                                    <br>BONUS Bonus                                             <br>CAP   Capitalização                                     <br>CART  Carteira                                          <br>CF    Cupom Fiscal                                      <br>CHD   Cheque Devolvido                                  <br>CHP   Cheque Pré                                        <br>CHQ   Cheque                                            <br>CHT   Cheque de Terceiros                               <br>CNT   Crédito em Conta                                  <br>COB   Cobrança                                          <br>COM   Comissão                                          <br>CON   Convênios                                         <br>CONC  Cobrança de Concessionária                        <br>COND  Condicional                                       <br>CONS  Consignado                                        <br>CONSO Consórcio                                         <br>CRC   Cartão de Crédito                                 <br>CRD   Cartão de Débito                                  <br>CRE   Crediário                                         <br>CRP   Cartão Pré-Pago                                   <br>CRT   Cartão                                            <br>CRTO  Cartório                                          <br>CTE   CT-e                                              <br>CTR   Contrato                                          <br>CUSJ  Custos Judiciais                                  <br>DACTE DACTE                                             <br>DAE   DAE                                               <br>DAJE  DAJE                                              <br>DAM   DAM                                               <br>DANFE DANFE                                             <br>DAR   DAR                                               <br>DARE  DARE                                              <br>DARJ  DARJ                                              <br>DARM  DARM                                              <br>DAS   DAS                                               <br>DDA   DDA                                               <br>DEB   Débito em Conta                                   <br>DEBA  Débito Automático                                 <br>DEP   Depósito                                          <br>DEV   Devolução                                         <br>DFE   Documento Fiscal Equivalente                      <br>DIN   Dinheiro                                          <br>DLC   Distribuição de Lucros                            <br>DNF   Documento não fiscal                              <br>DNFSE DANFSE                                            <br>DOA   Doação                                            <br>DOC   DOC                                               <br>DPVAT DPVAT                                             <br>DRF   DARF                                              <br>DUA   DUA                                               <br>DUAM  DUAM                                              <br>DUP   Duplicata                                         <br>EMP   Empréstimo                                        <br>ENC   Encargos                                          <br>ETAR  Estorno de Tarifa                                 <br>FAT   Fatura                                            <br>FER   Férias                                            <br>FIA   Fiado                                             <br>FIN   Financiamento                                     <br>FPGT  Folha de Pagamento                                <br>GAR   Garantia                                          <br>GARE  GARE                                              <br>GNRE  GNRE                                              <br>GPS   GPS                                               <br>GRCS  GRCS                                              <br>GRCSU GRCSU                                             <br>GRF   Guia de Recolhimento do FGTS                      <br>GRU   GRU                                               <br>GUIA  Guia de Recolhimento                              <br>HOL   Holerite                                          <br>IMP   Imposto                                           <br>INV   Invoice                                           <br>IPTU  IPTU                                              <br>IPVA  IPVA                                              <br>JUROS Juros Limite                                      <br>MED   Medição                                           <br>MULTA Multas                                            <br>MUTUO Mútuo                                             <br>NC    Nota de Crédito                                   <br>ND    Nota de Débito                                    <br>NF    Nota Fiscal                                       <br>NF3E  Nota Fiscal de Energia Elétrica Eletrônica        <br>NFA   Nota Fiscal de Abastecimento                      <br>NFC   Nota Fiscal de Consumidor                         <br>NFCE  Nota Fiscal de Consumidor Eletrônica              <br>NFD   Nota Fiscal de Devolução                          <br>NFE   Nota Fiscal Eletrônica                            <br>NFEE  Nota Fiscal Energia Elétrica                      <br>NFS   Nota Fiscal de Serviço                            <br>NFST  Nota Fiscal de Telecomunicações                   <br>NFSTM Nota Fiscal de Serviço Tomado                     <br>PDD   PDD                                               <br>PED   Pedido                                            <br>PEN   Pensão Alimentícia                                <br>PER   Permuta                                           <br>PIX   Pix                                               <br>PROF  Proforma Invoice                                  <br>PROL  Pro-Labore                                        <br>PROT  Protesto                                          <br>PROV  Provisão                                          <br>REC   Recibo                                            <br>REE   Reembolso                                         <br>REND  Rendimentos                                       <br>RES   Resgate                                           <br>RET   Rescisão Trabalhista                              <br>RPA   RPA                                               <br>SAN   Sangria                                           <br>SAQ   Saque                                             <br>SUP   Suprimento                                        <br>TAR   Tarifa                                            <br>TED   TED                                               <br>TFE   Taxa de Fiscalização de Estabelecimentos          <br>TIC   Ticket                                            <br>TID   Título Descontado                                 <br>TRA   Transferência                                     <br>TRAV  Transferência à Vista                             <br>TRLAV Licenciamento                                     <br>TX    Taxa                                              <br>VIST  A Vista                                           <br>VOU   Voucher                                           <br>WSITE Website                                      <br><br>Listagem completa disponível na API:<br>/api/v1/ger</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">meio_pagamento</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Meio de Pagamento - Utilizado apenas para emissão de NFS-e (campo "tPag" do XML). </div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo indica como a parcela da nota será paga.<br> <br>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.<br><br>Caso informado na estrutura "informacoes_adicionais" grava o valor como padrão para todas as parcelas geradas na integração que não tiverem esse campo preenchido a partir da estrutura "parcela".<br><br>Pode ser:<br>01  Dinheiro<br>02  Cheque<br>03  Cartão de Crédito<br>04  Cartão de Débito<br>05  Crédito Loja<br>10  Vale Alimentação<br>11  Vale Refeição<br>12  Vale Presente<br>13  Vale Combustível<br>15  Boleto Bancário<br>16  Depósito Bancário<br>17  Pagamento Instantâneo (PIX)<br>18  Transferência bancária, Carteira Digital<br>19  Programa de fidelidade, Cashback, Crédito Virtual.<br>90  Sem Pagamento<br>99  Outros<br><br>Listagem completa disponível na API:<br>/api/v1/geral/meiospagamento/</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nsu</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Número Sequencial Único NSU - Para identificar vendas por cartões ou TransactionID TID - Para identificar vendas de comercio eletrônico.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nao_gerar_boleto</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Não gerar boleto para esta parcela ao emitir a nota fiscal.</div><div class="more"><a href="javascript:void(0)">+</a><div>Informe "S" para não gerar o boleto. O padrão é "N".<br><br>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">parcela_adiantamento</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Está é uma parcela de Adiantamento do Cliente.</div><div class="more"><a href="javascript:void(0)">+</a><div>Informe "S" para indicar que é uma parcela de adiantamento.<br>O padrão é "N".<br><br>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">categoria_adiantamento</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código da Categoria para o Adiantamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>Será utilizada na conta a receber que representa o adiantamento desta parcela.<br><br>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">conta_corrente_adiantamento</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Conta Corrente de Adiantamento.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Informação localizada na Aba "Parcelas" da Ordem de Serviço.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="ParcelasArray"></a>
+<h3>ParcelasArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#Parcelas"><span class="lightBlue">Parcelas</span></a></span></p>
+<p>Lista de Parcelas</p>
+</div>
+<div class="complexTypeItem">
+<a name="ServicosPrestados"></a>
+<h3>ServicosPrestados</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nCodServico</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código Interno do Serviço conforme cadastrado na tabela de serviços.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Caso preenchido, irá assumir as informações do cadastro de serviço.<br><br>Se não for preenchido, assumirá os valores informados na API.<br><br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodIntServico</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração do Serviço conforme cadastrado na tabela de serviços.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Caso preenchido, irá assumir as informações do cadastro de serviço.<br><br>Se não for preenchido, assumirá os valores informados na API.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTribServ</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Tipo de Tributação dos Serviços.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.<br><br>Caso tenha informado a tag "nCodServico" o preenchimento passa a ser opcional e irá assumir o valor informado no cadastro do respectivo serviço.<br><br>Valores pode variar de acordo com o município. Verifique a legislação da sua cidade para obter os tipos de tributação disponíveis.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodServMun</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código do Serviço Municipal ou CNAE.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.<br><br>Caso tenha informado a tag "nCodServico" o preenchimento passa a ser opcional e irá assumir o valor informado no cadastro do respectivo serviço.<br><br>Valores pode variar de acordo com o município. Verifique a legislação da sua cidade para obter os códigos de serviço disponíveis.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodServLC116</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código do Serviço conforme Lei Complementar (LC 116).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.<br><br>Caso tenha informado a tag "nCodServico" o preenchimento passa a ser opcional e irá assumir o valor informado no cadastro do respectivo serviço.<br><br>Tabela única para todos os municípios.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQtde</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Quantidade de serviços.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValUnit</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor Unitário do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.<br><br>Caso tenha informado a tag "nCodServico" o preenchimento passa a ser opcional e irá assumir o valor informado no cadastro do respectivo serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTpDesconto</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Tipo de Desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Pode ser:<br>P - Percentual<br>V - Valor</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorDesconto</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do Desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqDesconto</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Aliquota do Desconto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorOutrasRetencoes</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor de Outras Retenções.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>(Disponível apenas para cidades que oferecem esse recurso.)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorAcrescimos</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor de Acréscimos e taxas.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>(Disponível apenas para cidades que oferecem esse recurso.)</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescServ</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição dos Serviços.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório.<br><br>Caso tenha informado a tag "nCodServico" o preenchimento passa a ser opcional e irá assumir o valor informado no cadastro do respectivo serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemISS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retem ISS (S/N)</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDadosAdicItem</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Dados adicionais do Item.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNbs</td>
+<td class="parameter-type">string<span class="parameter-lenght">9</span></td><td class="parameter-docs"><div class="first">Código da Nomenclatura Brasileira de Serviços (NBS).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Caso tenha informado a tag "nCodServico" irá assumir o valor informado no cadastro do respectivo serviço.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">impostos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#impostos">impostos</a></td><td class="parameter-docs"><div class="first">Dados do impostos do serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">DeducoesIss</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#DeducoesIssArray">DeducoesIssArray</a></td><td class="parameter-docs"><div class="first">Informe aqui as Deduções para o ISS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNaoGerarFinanceiro</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Não gerar conta a receber para este item.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Informar "S" para não gerar movimento financeiro.<br>Informar "N" para gerar movimento financeiro.<br><br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodCategItem</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código da Categoria.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nSeqItem</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Sequencia do Item</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. (Obrigatório no método AlterarOS)<br><br>Deve ser preenchido com uma sequencia de 1 a 199.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nIdItem</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">ID do Item da Ordem de Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na inclusão.<br><br>Pode ser informado na alteração para identificar o item. <br><br><br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAcaoItem</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Ação a ser realizada na alteração do item.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br><br>"A" - Alterar o item (padrão).<br>"E" - Excluir o item.<br>"I"  - Incluir o item na alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">viaUnica</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#viaUnica">viaUnica</a></td><td class="parameter-docs"><div class="first">Informações referente ao serviço de NF modelo 21 ou 22.</div><div class="more"><a href="javascript:void(0)">+</a><div></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cReembolso</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Identificação se o item é despesa reembolsável.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="ServicosPrestadosArray"></a>
+<h3>ServicosPrestadosArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#ServicosPrestados"><span class="lightBlue">ServicosPrestados</span></a></span></p>
+<p>Lista de ServicosPrestados</p>
+</div>
+<div class="complexTypeItem">
+<a name="despesaReembolsavel"></a>
+<h3>despesaReembolsavel</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nCodReemb</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">ID do Reembolso.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Código interno utilizado apenas na API, utilizado somente na Alteração e Exclusão).<br>Esse código não aparece na tela do Omie.<br>Utilize esse código para identificar a despesa via API.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAcaoReemb</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Pode ser:</div><div class="more"><a href="javascript:void(0)">+</a><div>"A" - Alterar a despesa.<br>"E" - Excluir a despesa.<br>"I" - Incluir a despesa na alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescReemb</td>
+<td class="parameter-type">string<span class="parameter-lenght">200</span></td><td class="parameter-docs"><div class="first">Descrição da despesa.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorReemb</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor da despesa.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDataReemb</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da despesa.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="despesaReembolsavelArray"></a>
+<h3>despesaReembolsavelArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#despesaReembolsavel"><span class="lightBlue">despesaReembolsavel</span></a></span></p>
+<p>Lista de despesaReembolsavel</p>
+</div>
+<div class="complexTypeItem">
+<a name="despesasReembolsaveis"></a>
+<h3>despesasReembolsaveis</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodCategReemb</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código da categoria para reembolso</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">despesaReembolsavel</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#despesaReembolsavelArray">despesaReembolsavelArray</a></td><td class="parameter-docs"><div class="first">Despesa reembolsável</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="filtrar_por_codigo"></a>
+<h3>filtrar_por_codigo</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="filtrar_por_codigoArray"></a>
+<h3>filtrar_por_codigoArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#filtrar_por_codigo"><span class="lightBlue">filtrar_por_codigo</span></a></span></p>
+<p>Lista de filtrar_por_codigo</p>
+</div>
+<div class="complexTypeItem">
+<a name="impostos"></a>
+<h3>impostos</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cFixarISS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqISS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de ISS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nBaseISS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Base de Cálculo do ISS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nTotDeducao</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor de Dedução da Base de Cálculo. </div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Por padrão, esse campo afeta a Base de Cálculo do ISS.<br><br>Para atender a condições legais acordadas para cada munícipio pode afetar as Bases de Cálculos dos Impostos Federais também. Consulte a legislação do seu município.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorDeducao</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor das deduções do item.</div><div class="more"><a href="javascript:void(0)">+</a><div>Utilizado apenas nos métodos de Consulta/Listagem.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorISS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do ISS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUtilizaValorImposto</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o valor informado para os Impostos Federais deverá ser mantido ao invés de ser recalculado a partir da alíquota.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. O padrão é "N".<br><br>Assim:<br><br>Caso seja informado "N", indica que valor do imposto deve ser calculado a partir da alíquota e base de cálculo.<br><br>Caso seja informado "S", indica que o valor do imposto será mantido e a alíquota será recalculada a partir do valor do imposto e base de cálculo.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFixarIRRF</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIRRF</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de IRRF.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Para o cálculo do imposto o preenchimento é obrigatório caso a tag [cUtilizaValorImposto] seja diferente de "S". <br><br>Lembre-se também de indicar se o imposto deve ser retido ou não na tag correspondente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorIRRF</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do IRRF.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração caso a tag [cUtilizarValorImposto] seja diferente de "S".<br><br>Caso a tag [cUtilizarValorImposto] seja preenchida com "S", indicará que o valor informado deve ser preservado e que a respectiva alíquota deve ser calculada ao invés do valor do imposto. Nesse caso, o alíquota informada na tag correspondente será desprezada.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorDeducaoIRRF</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor da dedução da base do IR.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemIRRF</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retém IRRF  (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. Padrão é "N".<br><br>Indica se o imposto deve ser retido ou não.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFixarPIS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqPIS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de PIS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Para o cálculo do imposto o preenchimento é obrigatório caso a tag [cUtilizaValorImposto] seja diferente de "S". <br><br>Lembre-se também de indicar se o imposto deve ser retido ou não na tag correspondente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorPIS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do PIS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração caso a tag [cUtilizarValorImposto] seja diferente de "S".<br><br>Caso a tag [cUtilizarValorImposto] seja preenchida com "S", indicará que o valor informado deve ser preservado e que a respectiva alíquota deve ser calculada ao invés do valor do imposto. Nesse caso, o alíquota informada na tag correspondente será desprezada.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemPIS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retém PIS  (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. Padrão é "N".<br><br>Indica se o imposto deve ser retido ou não.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFixarCOFINS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCOFINS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de COFINS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Para o cálculo do imposto o preenchimento é obrigatório caso a tag [cUtilizaValorImposto] seja diferente de "S". <br><br>Lembre-se também de indicar se o imposto deve ser retido ou não na tag correspondente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorCOFINS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do COFINS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração caso a tag [cUtilizarValorImposto] seja diferente de "S".<br><br>Caso a tag [cUtilizarValorImposto] seja preenchida com "S", indicará que o valor informado deve ser preservado e que a respectiva alíquota deve ser calculada ao invés do valor do imposto. Nesse caso, o alíquota informada na tag correspondente será desprezada.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemCOFINS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retém COFINS  (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. Padrão é "N".<br><br>Indica se o imposto deve ser retido ou não.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFixarCSLL</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCSLL</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de CSLL.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Para o cálculo do imposto o preenchimento é obrigatório caso a tag [cUtilizaValorImposto] seja diferente de "S". <br><br>Lembre-se também de indicar se o imposto deve ser retido ou não na tag correspondente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorCSLL</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor de CSLL.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração caso a tag [cUtilizarValorImposto] seja diferente de "S".<br><br>Caso a tag [cUtilizarValorImposto] seja preenchida com "S", indicará que o valor informado deve ser preservado e que a respectiva alíquota deve ser calculada ao invés do valor do imposto. Nesse caso, o alíquota informada na tag correspondente será desprezada.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemCSLL</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retém CSLL  (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. Padrão é "N".<br><br>Indica se o imposto deve ser retido ou não.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFixarINSS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se o imposto foi alterado pelo usuário ou informado via importação de planilha ou API.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo é preenchido automaticamente pelo Omie e não deve ser informado na inclusão/alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqINSS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota de INSS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Para o cálculo do imposto o preenchimento é obrigatório caso a tag [cUtilizaValorImposto] seja diferente de "S". <br><br>Lembre-se também de indicar se o imposto deve ser retido ou não na tag correspondente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorINSS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor de INSS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.<br><br>Esse campo é calculado automaticamente pelo Omie e não deve ser informado na inclusão/alteração caso a tag [cUtilizarValorImposto] seja diferente de "S".<br><br>Caso a tag [cUtilizarValorImposto] seja preenchida com "S", indicará que o valor informado deve ser preservado e que a respectiva alíquota deve ser calculada ao invés do valor do imposto. Nesse caso, o alíquota informada na tag correspondente será desprezada.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cRetemINSS</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Retém INSS  (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional. Padrão é "N".<br><br>Indica se o imposto deve ser retido ou não.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqRedBaseINSS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual de Redução da Base de Cálculo do INSS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqRedBaseCOFINS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual de Redução da Base de Cálculo do COFINS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqRedBasePIS</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual de Redução da Base de Cálculo do PIS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lDeduzISS</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Deduz o ISS da Base de Cálculo de PIS e COFINS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCST</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Código da Situação Tributária IBS/CBS.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cClassTrib</td>
+<td class="parameter-type">string<span class="parameter-lenght">6</span></td><td class="parameter-docs"><div class="first">Código de Classificação Tributária.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIbsUf</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do Alíquota do IBS Estadual.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqIbsMun</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do Alíquota do IBS Municipal.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoIbsUf</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução IBS municipal.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoIbsMun</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução IBS estadual.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nAliqCbs</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Alíquota do CBS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nPercReducaoCbs</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Percentual redução CBS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cIndOPer</td>
+<td class="parameter-type">string<span class="parameter-lenght">6</span></td><td class="parameter-docs"><div class="first">Código Indicador de Operação.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorIbsUf</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do IBS Estadual.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorIbsMun</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do IBS Municipal.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorCbs</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor do CBS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cManCbs</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica que houve alteração manual da alíquota de CBS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cManIbsMun</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica que houve alteração manual da alíquota de IBS Municipal.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cManIbsUf</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica que houve alteração manual da alíquota de IBS Estadual.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na Inclusão/Alteração. Campo disponível apenas para consulta.<br><br>Para os métodos de inclusão e alteração, esse campo será preenchido conforme o cadastro do serviço no Omie.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="listaOS"></a>
+<h3>listaOS</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nIdPed</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumPedido</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="listaOSArray"></a>
+<h3>listaOSArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#listaOS"><span class="lightBlue">listaOS</span></a></span></p>
+<p>Lista de listaOS</p>
+</div>
+<div class="complexTypeItem">
+<a name="lote_validade"></a>
+<h3>lote_validade</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nIdLote</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Id do Lote do produto.</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando o produto possui controle de lote e o método do consumo do lote está definido como 'Manual' nas configurações..</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQtdLote</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Informe aqui a quantidade do Lote para o produto.</div><div class="more"><a href="javascript:void(0)">+</a><div>É obrigatório quando o produto possui controle de lote e o método do consumo do lote está definido como 'Manual' nas configurações.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="lote_validadeArray"></a>
+<h3>lote_validadeArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#lote_validade"><span class="lightBlue">lote_validade</span></a></span></p>
+<p>Lista de lote_validade</p>
+</div>
+<div class="complexTypeItem">
+<a name="mensagens"></a>
+<h3>mensagens</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodigo</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Código da mensagem de Erro/Aviso</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescricao</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição da mensagem de erro/aviso.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCorrecao</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Correção da descrição de mensagem de erro/aviso.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cSituacao</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Situação da mensagem.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>ERRO<br>ALERTA<br>SUCESSO<br><br>Esse campo só é retornado quando a tag "lMsg" enviada na request é true.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAnexo</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indica se a mensagem tem algum anexo (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo só é retornado quando a tag "lMsg" enviada na request é true.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUsuario</td>
+<td class="parameter-type">string<span class="parameter-lenght">800</span></td><td class="parameter-docs"><div class="first">Usuário vinculado a mensagem.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo só é retornado quando a tag "lMsg" enviada na request é true.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dData</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data da mensagem.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo só é retornado quando a tag "lMsg" enviada na request é true.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">hHora</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora da mensagem.</div><div class="more"><a href="javascript:void(0)">+</a><div>Esse campo só é retornado quando a tag "lMsg" enviada na request é true.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="mensagensArray"></a>
+<h3>mensagensArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#mensagens"><span class="lightBlue">mensagens</span></a></span></p>
+<p>Lista de mensagens</p>
+</div>
+<div class="complexTypeItem">
+<a name="omie_fail"></a>
+<h3>omie_fail</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">code</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Codigo do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">description</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descricao do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-required">referer</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Origem do erro</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-required">fatal</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Indica se eh um erro fatal</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osCadastro"></a>
+<h3>osCadastro</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">Cabecalho</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#Cabecalho">Cabecalho</a></td><td class="parameter-docs"><div class="first">Cabeçalho da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">InformacoesAdicionais</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#InformacoesAdicionais">InformacoesAdicionais</a></td><td class="parameter-docs"><div class="first">Informações adicionais da OS&nbsp;</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">Email</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#Email">Email</a></td><td class="parameter-docs"><div class="first">Informações do E-Mail</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">Departamentos</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#DepartamentosArray">DepartamentosArray</a></td><td class="parameter-docs"><div class="first">Lista de distribuição por departamentos</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">ServicosPrestados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#ServicosPrestadosArray">ServicosPrestadosArray</a></td><td class="parameter-docs"><div class="first">Lista de Serviços Prestados</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">Parcelas</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#ParcelasArray">ParcelasArray</a></td><td class="parameter-docs"><div class="first">Permite que o parcelamento seja realizado de forma manual.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">Observacoes</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#Observacoes">Observacoes</a></td><td class="parameter-docs"><div class="first">Observações da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">InfoCadastro</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#InfoCadastro">InfoCadastro</a></td><td class="parameter-docs"><div class="first">Informações do cadastro da Ordem de Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">despesasReembolsaveis</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#despesasReembolsaveis">despesasReembolsaveis</a></td><td class="parameter-docs"><div class="first">Despesas reembolsáveis.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtosUtilizados</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#produtosUtilizados">produtosUtilizados</a></td><td class="parameter-docs"><div class="first">Produtos Utilizados na Ordem de Serviço.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osCadastroArray"></a>
+<h3>osCadastroArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#osCadastro"><span class="lightBlue">osCadastro</span></a></span></p>
+<p>Lista de osCadastro</p>
+</div>
+<div class="complexTypeItem">
+<a name="osChave"></a>
+<h3>osChave</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">despesasReembolsaveis</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#despesasReembolsaveis">despesasReembolsaveis</a></td><td class="parameter-docs"><div class="first">Despesas reembolsáveis.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osListarRequest"></a>
+<h3>osListarRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">pagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número da página que será listada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">registros_por_pagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número de registros retornados</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">apenas_importado_api</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">DEPRECATED</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">ordenar_por</td>
+<td class="parameter-type">string<span class="parameter-lenght">100</span></td><td class="parameter-docs"><div class="first">Ordem de exibição dos dados. Padrão: Código.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">ordem_decrescente</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Ordem Crescente ou Decrescente.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_de</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de inclusão e/ou alteração inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_ate</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de inclusão e/ou alteração final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_apenas_inclusao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Filtrar apenas registros incluídos (S/N)</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_apenas_alteracao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Filtrar apenas registros alterados (S/N)</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_codigo</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#filtrar_por_codigoArray">filtrar_por_codigoArray</a></td><td class="parameter-docs"><div class="first">Lista de códigos de Ordem de Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_status</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Status da OS:</div><div class="more"><a href="javascript:void(0)">+</a><div>F-Faturada<br>N-Não faturada<br>C-Cancelada<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_etapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Etapa da Ordem de Serviço.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_cliente</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Filtra pelo ID do cliente.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_previsao_de</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de previsão inicial</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_previsao_ate</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de previsão final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_faturamento_de</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de faturamento inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_faturamento_ate</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de faturamento final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_cancelamento_de</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de cancelamento inicial.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">filtrar_por_data_cancelamento_ate</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de cancelamento final.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">ordem_descrescente</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Ordem Crescente ou Decrescente.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cExibirDespesas</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Exibir as despesas reembolsáveis (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Opcional.<br><br>Preencher com "S" ou "N".</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cExibirProdutos</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Exibir os produtos utilizados (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento Opcional.<br><br>Preencher com "S" ou "N".</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoFat</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Tipo de faturamento:</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser: <br><br>REC - Recibo<br>NFS - NFS-e<br>VUF - Via única não autorizada<br>VUA - Via única autorizada</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osListarResponse"></a>
+<h3>osListarResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">pagina</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número da página que será listada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">total_de_paginas</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Total de páginas encontradas.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">registros</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Número de registros retornados</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">total_de_registros</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Total de registros encontrados.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">osCadastro</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#osCadastroArray">osCadastroArray</a></td><td class="parameter-docs"><div class="first">Cadastro de Ordem de Serviços</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osObterRequest"></a>
+<h3>osObterRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cEtapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Código da etapa do processo, sendo:</div><div class="more"><a href="javascript:void(0)">+</a><div>10 - Primeira coluna<br>20 - Segunda coluna<br>30 - Terceira coluna<br>40 - Quarta coluna<br>50 - Faturar</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osObterResponse"></a>
+<h3>osObterResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cEtapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Código da etapa do processo, sendo:</div><div class="more"><a href="javascript:void(0)">+</a><div>10 - Primeira coluna<br>20 - Segunda coluna<br>30 - Terceira coluna<br>40 - Quarta coluna<br>50 - Faturar</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">listaOS</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#listaOSArray">listaOSArray</a></td><td class="parameter-docs"><div class="first">Lista de Ordens de Serviço de uma etapa.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osStatus"></a>
+<h3>osStatus</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodStatus</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cDescStatus</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osStatusRequest"></a>
+<h3>osStatusRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lPdfDemo</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Exibir a Url do PDF do Demonstrativo da NFS-e.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>true<br>false<br><br>O padrão é false.<br><br>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lPdfDest</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Exibir a Url do PDF do Destinatário da NFS-e.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>true<br>false<br><br>O padrão é false.<br><br>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lRps</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Exibir a Url da RPS.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>true<br>false<br><br>O padrão é false.<br><br>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lPdfRecibo</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Exibir a Url do Recibo.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br>true<br>false<br><br>O padrão é false.<br><br>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lMsg</td>
+<td class="parameter-type">boolean</td><td class="parameter-docs"><div class="first">Retornar todas mensagens de comunicação com a prefeitura (S/N).</div><div class="more"><a href="javascript:void(0)">+</a><div>Quando preenchido com "N" ou não preenchido, vamos devolver apenas as mensagens com erro.<br>Quando preenchido com "S", vamos devolver todas as mensagens de comunicação com a prefeitura.<br><br>O padrão é "N".<br><br>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osStatusResponse"></a>
+<h3>osStatusResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumContrato</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Número do Contrato de Venda</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumRecibo</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Número do Recibo gerado.</div><div class="more"><a href="javascript:void(0)">+</a><div>(Gerado automaticamente. Se informado na inclusão será ignorado).</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumPedido</td>
+<td class="parameter-type">string<span class="parameter-lenght">30</span></td><td class="parameter-docs"><div class="first">Número do Pedido do Cliente</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEtapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Código da etapa do processo, sendo:</div><div class="more"><a href="javascript:void(0)">+</a><div>10 - Primeira coluna<br>20 - Segunda coluna<br>30 - Terceira coluna<br>40 - Quarta coluna<br>50 - Faturar</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCancelada</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">"S" para Ordem de Serviço cancelada.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cFaturada</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">"S" para Ordem de Serviço faturada com sucesso.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAmbiente</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Ambiente de emissão da NFS-e.</div><div class="more"><a href="javascript:void(0)">+</a><div>Pode ser:<br><br>H - Homologação<br>P - Produção</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Inclusão da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrInc</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora de inclusão da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Alteração da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrAlt</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora de Alteração da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtFat</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Faturamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrFat</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora do Faturamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">dDtCanc</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Data de Cancelamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cHrCanc</td>
+<td class="parameter-type">string<span class="parameter-lenght">8</span></td><td class="parameter-docs"><div class="first">Hora do Cancelamento</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nValorTot</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Valor total da Ordem de Serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Não deve ser informado na inclusão ou alteração.<br>Campo calculado automaticamente.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cUrlPdfRecibo</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Link para obter o PDF do Recibo.</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">ListaRpsNfse</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#ListaRpsNfseArray">ListaRpsNfseArray</a></td><td class="parameter-docs"><div class="first">Lista de RPS geradas para a Ordem de Serviço</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osTrocarEtapaRequest"></a>
+<h3>osTrocarEtapaRequest</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cEtapa</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Código da etapa do processo, sendo:</div><div class="more"><a href="javascript:void(0)">+</a><div>10 - Primeira coluna<br>20 - Segunda coluna<br>30 - Terceira coluna<br>40 - Quarta coluna<br>50 - Faturar</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="osTrocarEtapaResponse"></a>
+<h3>osTrocarEtapaResponse</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nCodOS</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código da Ordem de Serviço</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodIntOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">60</span></td><td class="parameter-docs"><div class="first">Código de Integração da OS</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cNumOS</td>
+<td class="parameter-type">string<span class="parameter-lenght">15</span></td><td class="parameter-docs"><div class="first">Número da Ordem de Serviço</div><div class="more"><a href="javascript:void(0)">+</a><div>(Conforme visualizada em tela pelo cliente)<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">codigo_status</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código do Status</div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">descricao_status</td>
+<td class="parameter-type">text</td><td class="parameter-docs"><div class="first">Descrição do Status</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="produtoUtilizado"></a>
+<h3>produtoUtilizado</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">nIdItemPU</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">(Código interno utilizado apenas na API). </div><div class="more"><a href="javascript:void(0)">+</a><div>Não informar na inclusão.<br><br>Esse código não aparece na tela do Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cAcaoItemPU</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Pode ser:</div><div class="more"><a href="javascript:void(0)">+</a><div>"A" - Alterar o item.<br>"E" - Excluir o item.<br>"I" - Incluir o item na alteração.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nCodProdutoPU</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código interno do produto.</div><div class="more"><a href="javascript:void(0)">+</a><div>(utilizado apenas na API).<br>Esse código não aparece na tela do Omie.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">nQtdePU</td>
+<td class="parameter-type">decimal</td><td class="parameter-docs"><div class="first">Quantidade.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento obrigatório na inclusão.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">codigo_local_estoque</td>
+<td class="parameter-type">integer</td><td class="parameter-docs"><div class="first">Código do Local do Estoque.</div><div class="more"><a href="javascript:void(0)">+</a><div>Preenchimento opcional.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">lote_validade</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#lote_validadeArray">lote_validadeArray</a></td><td class="parameter-docs"><div class="first">Informações referentes ao lote e validade do produto.</div><div class="more"><a href="javascript:void(0)">+</a><div>A tag só deve ser informada se o produto possuir controle de lote e se a intenção é informar os lotes "manualmente" por API.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="produtoUtilizadoArray"></a>
+<h3>produtoUtilizadoArray</h3>
+<p>Este parâmetro é um array do tipo <span class="pre"><a href="https://app.omie.com.br/api/v1/servicos/os/#produtoUtilizado"><span class="lightBlue">produtoUtilizado</span></a></span></p>
+<p>Lista de produtoUtilizado</p>
+</div>
+<div class="complexTypeItem">
+<a name="produtosUtilizados"></a>
+<h3>produtosUtilizados</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cAcaoProdUtilizados</td>
+<td class="parameter-type">string<span class="parameter-lenght">3</span></td><td class="parameter-docs"><div class="first">Pode ser:</div><div class="more"><a href="javascript:void(0)">+</a><div>REM - Será gerado uma remessa dos produtos para o cliente.<br>EST - Será gerado uma saída de estoque.  <br><br>Obrigatório na inclusão.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCodCategRem</td>
+<td class="parameter-type">string<span class="parameter-lenght">20</span></td><td class="parameter-docs"><div class="first">Código da Categoria da Remessa ou Pedido de Venda.</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando usar cAcaoFaturamento como 'REM' ou 'PED'</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">produtoUtilizado</td>
+<td class="parameter-type"><a href="https://app.omie.com.br/api/v1/servicos/os/#produtoUtilizadoArray">produtoUtilizadoArray</a></td><td class="parameter-docs"><div class="first">rodutos utilizados no serviço.</div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+<div class="complexTypeItem">
+<a name="viaUnica"></a>
+<h3>viaUnica</h3>
+<p></p>
+<table class="table table-hover table-condensed">
+<tbody><tr>
+<td class="parameter-name parameter-optional">cModeloNF</td>
+<td class="parameter-type">string<span class="parameter-lenght">2</span></td><td class="parameter-docs"><div class="first">Indica qual modelo de NF será emitida para o serviço.</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cEnvViaUnica for igual a "S".<br><br>Pode ser: <br>21 - Nota Fiscal de Serviço de Comunicação<br>22 - Nota Fiscal de Serviço de Telecomunicação</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cCFOP</td>
+<td class="parameter-type">string<span class="parameter-lenght">10</span></td><td class="parameter-docs"><div class="first">Código CFOP para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cEnvViaUnica for igual a "S".<br><br>Utilize a tag "nCodigo" do método "ListarCFOP" da API  /api/v1/produtos/cfop/ para obter essa informação.</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cClassifServico</td>
+<td class="parameter-type">string<span class="parameter-lenght">4</span></td><td class="parameter-docs"><div class="first">Código da Classificação para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cEnvViaUnica for igual a "S".<br><br>Utilize a tag "cCodigo" do método "ListarClassificacaoServico" da API<br>/api/v1/servicos/classificacaoservico/ para obter essa informação.<br></div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoReceita</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Indicador do Tipo de Receita para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cEnvViaUnica for igual a "S".<br><br>Pode ser:<br>0 - Receita própria - serviços prestados<br>1 - Receita própria - cobrança de débitos<br>2 - Receita própria - venda de mercadorias<br>3 - Receita própria - venda de serviço pré-pago<br>4 - Outras receitas próprias<br>5 - Receitas de terceiros (co-faturamento)<br>9 - Outras receitas de terceiros</div></div></td>
+</tr><tr>
+</tr><tr>
+<td class="parameter-name parameter-optional">cTipoUtilizacao</td>
+<td class="parameter-type">string<span class="parameter-lenght">1</span></td><td class="parameter-docs"><div class="first">Código do tipo de utilização para NF Via Única (Modelos 21 e 22).</div><div class="more"><a href="javascript:void(0)">+</a><div>Obrigatório quando a tag cEnvViaUnica for igual a "S".<br><br>Utilize a tag "cCodigo" do método "ListarTipoUtilizacao" da API<br>/api/v1/servicos/tipoutilizacao/ para obter essa informação.</div></div></td>
+</tr><tr>
+</tr></tbody></table>
+</div>
+</div>
+<div class="col-md-3">
+<div id="affix-menu" data-spy="affix" data-offset-top="294" class="affix">
+<h2>Métodos</h2>
+<nav id="index" class="hidden-print hidden-xs hidden-sm">
+<ul class="nav">
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#AlterarOS">AlterarOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#ConsultarOS">ConsultarOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#ExcluirOS">ExcluirOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#IncluirOS">IncluirOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#ListarOS">ListarOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#StatusOS">StatusOS</a></li>
+<li><a href="https://app.omie.com.br/api/v1/servicos/os/#TrocarEtapaOS">TrocarEtapaOS</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+</div></body></html>

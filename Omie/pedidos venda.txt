@@ -1,0 +1,360 @@
+// Esta função principal orquestra a extração de todos os pedidos de venda da Omie.
+// Ela foi aprimorada com logs detalhados para facilitar a depuração e corrigida
+// para garantir que os dados numéricos sejam salvos corretamente na planilha.
+function listarTodosPedidosVendaOmie_CORRETO() {
+  try {
+    // 1. Prepara a planilha de destino, limpando-a e definindo os cabeçalhos.
+    const { sheet, headers } = inicializarPlanilha();
+
+    // 2. Busca dados de apoio (clientes, projetos, produtos) e os armazena em cache
+    // para otimizar a performance e reduzir chamadas de API.
+    console.log("Iniciando busca de dados de apoio (clientes, projetos, produtos)...");
+    const mapaClientes = buscarTodosClientesOmie_CACHE();
+    const mapaProjetos = buscarNomesProjetosVenda_CACHE();
+    const mapaProdutos = buscarProdutosComCusto_CACHE();
+    console.log("Dados de apoio carregados com sucesso.");
+
+    const todosPedidos = [];
+    let pagina = 1;
+
+    // 3. Loop para buscar os pedidos de venda página por página da API Omie.
+    while (true) {
+      console.log(`Buscando pedidos da página ${pagina}...`);
+      const pedidosPagina = buscarPedidosPagina(pagina);
+      
+      // Se a página não retornar pedidos, encerra o loop.
+      if (pedidosPagina.length === 0) {
+        console.log("Nenhum pedido encontrado nesta página. Finalizando busca.");
+        break;
+      }
+
+      todosPedidos.push(...pedidosPagina);
+      console.log(`Página ${pagina}: ${pedidosPagina.length} pedidos obtidos. Total acumulado: ${todosPedidos.length}`);
+      pagina++;
+      Utilities.sleep(300); // Pausa para não exceder os limites da API.
+    }
+
+    // 4. Processa e formata os dados dos pedidos para o formato da planilha.
+    console.log(`Total de ${todosPedidos.length} pedidos brutos a serem processados.`);
+    if (todosPedidos.length === 0) {
+        console.warn("AVISO: Nenhum pedido foi encontrado para ser processado. A planilha não será atualizada.");
+        return;
+    }
+    const dadosFormatados = processarDadosPedidos(todosPedidos, mapaClientes, mapaProjetos, mapaProdutos);
+    console.log(`${dadosFormatados.length} pedidos foram formatados para escrita.`);
+
+    // Verificação de segurança para garantir a consistência das colunas.
+    const linhasComErros = dadosFormatados.filter(linha => linha.length !== headers.length);
+    if (linhasComErros.length > 0) {
+      console.error("ERRO CRÍTICO: Inconsistência no número de colunas. Abortando escrita.", linhasComErros);
+      throw new Error("Inconsistência no número de colunas nos dados formatados.");
+    }
+
+    // 5. Escreve os dados processados na planilha.
+    if (dadosFormatados.length > 0) {
+      escreverDadosNaPlanilha(sheet, headers, dadosFormatados);
+      formatarPlanilhaVenda(sheet); // Formata as colunas (moeda, data).
+    } else {
+      console.warn("AVISO: Após o processamento, não restaram dados para escrever na planilha.");
+    }
+    
+    console.log(`✅ Processo concluído! Total de pedidos extraídos: ${todosPedidos.length}`);
+    registrarUltimaAtualizacaoPedidos();
+
+  } catch (error) {
+    console.error("Erro no processamento principal:", error.message, error.stack);
+    // Lançar o erro novamente pode ser útil em alguns contextos de execução do Apps Script.
+    throw error;
+  }
+}
+
+// Registra a data e hora da última atualização bem-sucedida.
+function registrarUltimaAtualizacaoPedidos() {
+  const ss = SpreadsheetApp.openById("1peZYbOOT8g_5cntCehgTh0W9fo4i46S6aaMHXDl5B_8");
+  const abaConfiguracoes = ss.getSheetByName("Config");
+  if (!abaConfiguracoes) return;
+
+  const agora = new Date();
+  abaConfiguracoes.getRange("G11").setValue("Última atualização Pedidos de Venda: " + agora.toLocaleString("pt-BR"));
+}
+
+// Prepara a planilha "Pedidos", limpando o conteúdo e escrevendo os cabeçalhos.
+// Prepara a planilha "Pedidos", limpando o conteúdo e escrevendo os cabeçalhos.
+function inicializarPlanilha() {
+  const spreadsheet = SpreadsheetApp.openById("1peZYbOOT8g_5cntCehgTh0W9fo4i46S6aaMHXDl5B_8");
+  const nomeAba = "Pedidos";
+  let sheet = spreadsheet.getSheetByName(nomeAba);
+  if (!sheet) sheet = spreadsheet.insertSheet(nomeAba);
+  sheet.clearContents();
+
+  // NOVO: Adicione "DEVOLVIDO" aqui.
+  const headers = [
+    "NUMERO DA VENDA", "DATA ABERTURA", "ETAPA", "NUMERO DO PEDIDO",
+    "VALOR DESCONTO", "TOTAL", "CANCELADAS", "CLIENTE", "NOME PROJETO",
+    "DATA DE EMISSÃO", "CUSTO TOTAL", "LUCRO", "DEVOLVIDO" // <<<< NOVO CABEÇALHO
+  ];
+
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight("bold");
+  return { sheet, headers };
+}
+
+// Busca uma página de pedidos da API Omie, com logs aprimorados.
+function buscarPedidosPagina(pagina) {
+  const url = "https://app.omie.com.br/api/v1/produtos/pedido/";
+  const { appKey, appSecret } = getCredentials();
+
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "ListarPedidos",
+    param: [{ pagina, registros_por_pagina: 500, apenas_importado_api: "N" }]
+  };
+
+  const resp = UrlFetchApp.fetch(url, {
+    method: "post",
+    contentType: "application/json",
+    payload: JSON.stringify(payload),
+    muteHttpExceptions: true // Permite capturar e analisar respostas de erro.
+  });
+
+  const responseCode = resp.getResponseCode();
+  const responseText = resp.getContentText();
+
+  if (responseCode !== 200) {
+    console.error(`Erro na chamada da API Omie (Página ${pagina}). Código: ${responseCode}. Resposta: ${responseText}`);
+    return []; // Retorna array vazio em caso de erro de conexão/servidor.
+  }
+
+  try {
+    const json = JSON.parse(responseText);
+    // Verifica se a resposta contém a estrutura de erro conhecida da Omie
+    if (json.faultstring) {
+        console.error(`Erro retornado pela API Omie: ${json.faultstring}`);
+        return [];
+    }
+    return json.pedido_venda_produto || []; // Retorna os pedidos ou um array vazio.
+  } catch (e) {
+    console.error(`Erro ao analisar JSON da resposta da API (Página ${pagina}). Resposta recebida: ${responseText}`, e);
+    return [];
+  }
+}
+
+
+// Constrói um cache de clientes a partir de uma aba e da API Omie.
+function buscarTodosClientesOmie_CACHE() {
+  const cacheSheet = getOrCreateSheet("Cache_Clientes", ["codigo_cliente", "nome_fantasia"]);
+  const cache = {};
+
+  cacheSheet.getDataRange().getValues().slice(1).forEach(linha => {
+    const codigo = linha[0]?.toString();
+    const nome = linha[1];
+    if (codigo) cache[codigo] = nome;
+  });
+
+  const url = "https://app.omie.com.br/api/v1/geral/clientes/";
+  const { appKey, appSecret } = getCredentials();
+  let pagina = 1;
+  const novos = [];
+
+  while (true) {
+    const payload = {
+      app_key: appKey,
+      app_secret: appSecret,
+      call: "ListarClientes",
+      param: [{ pagina, registros_por_pagina: 500 }]
+    };
+    const resp = UrlFetchApp.fetch(url, { method: "post", contentType: "application/json", payload: JSON.stringify(payload), muteHttpExceptions: true });
+    const json = JSON.parse(resp.getContentText());
+    const clientes = json.clientes_cadastro || [];
+    if (!clientes.length) break;
+
+    clientes.forEach(cli => {
+      const codigo = cli.codigo_cliente_omie?.toString();
+      const nome = cli.nome_fantasia || "Sem nome";
+      if (codigo && !cache[codigo]) {
+        cache[codigo] = nome;
+        novos.push([codigo, nome]);
+      }
+    });
+
+    if (clientes.length < 500) break;
+    pagina++;
+    Utilities.sleep(300);
+  }
+
+  if (novos.length > 0) {
+    cacheSheet.getRange(cacheSheet.getLastRow() + 1, 1, novos.length, 2).setValues(novos);
+  }
+  return cache;
+}
+
+// Constrói um cache de projetos a partir de uma aba.
+function buscarNomesProjetosVenda_CACHE() {
+  const cacheSheet = getOrCreateSheet("Cache_Projetos", ["codigo_projeto", "nome_projeto"]);
+  const cache = {};
+  cacheSheet.getDataRange().getValues().slice(1).forEach(linha => {
+    if (linha[0]) cache[linha[0]] = linha[1];
+  });
+  return cache;
+}
+
+// Busca o custo dos produtos de uma planilha externa.
+function buscarProdutosComCusto_CACHE() {
+  const sheetCostId = "1CoOGXrTbUHACaLZKXWVE-OzvoXKQsp-JEfJW_C6_izs";
+  const sheetCostName = "Produtos";
+  const cache = {};
+  
+  try {
+    const costSpreadsheet = SpreadsheetApp.openById(sheetCostId);
+    const costSheet = costSpreadsheet.getSheetByName(sheetCostName);
+    if (!costSheet) {
+      console.error(`Aba "${sheetCostName}" não encontrada na planilha de custo.`);
+      return cache;
+    }
+
+    const dados = costSheet.getDataRange().getValues();
+    const headers = dados[0].map(h => h.trim().toUpperCase());
+    const cmcIndex = headers.indexOf("CMC UNITÁRIO");
+    const codigoIndex = headers.indexOf("CÓDIGO DO PRODUTO");
+
+    if (cmcIndex === -1 || codigoIndex === -1) {
+      console.error("Colunas 'CÓDIGO DO PRODUTO' ou 'CMC UNITÁRIO' não encontradas.");
+      return cache;
+    }
+
+    dados.slice(1).forEach((linha) => {
+      const codigo = linha[codigoIndex]?.toString().trim();
+      const custo = parseToNumber(linha[cmcIndex]); // Usa a nova função para converter
+      if (codigo && custo > 0) {
+        cache[codigo] = custo;
+      }
+    });
+    console.log(`${Object.keys(cache).length} produtos com custo carregados do cache.`);
+  } catch (e) {
+    console.error(`Erro ao buscar custos da planilha de produtos: ${e.message}`);
+  }
+  return cache;
+}
+
+// Utilitário para obter ou criar uma aba, já com cabeçalho.
+function getOrCreateSheet(nome, headers) {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let aba = ss.getSheetByName(nome);
+  if (!aba) {
+    aba = ss.insertSheet(nome);
+    if (headers && headers.length > 0) {
+      aba.appendRow(headers);
+    }
+  }
+  return aba;
+}
+
+// NOVO: Converte um valor (possivelmente com vírgula) para um número (float).
+function parseToNumber(value) {
+  if (value === null || typeof value === 'undefined' || value === '') {
+    return 0.0;
+  }
+  const numericValue = parseFloat(String(value).replace(',', '.'));
+  return isNaN(numericValue) ? 0.0 : numericValue;
+}
+
+// Processa a lista de pedidos brutos para o formato final da planilha.
+// Processa a lista de pedidos brutos para o formato final da planilha.
+function processarDadosPedidos(pedidos, mapaClientes, mapaProjetos, mapaProdutos) {
+  return pedidos.map(p => {
+    const c = p.cabecalho || {};
+    const info = p.infoCadastro || {};
+    const add = p.informacoes_adicionais || {};
+    const tot = p.total_pedido || {};
+    const itensPedido = p.det || [];
+    
+    // Usa a nova função para garantir que os valores sejam numéricos para os cálculos.
+    const valorTotalPedido = parseToNumber(tot.valor_total_pedido);
+    const valorDescontos = parseToNumber(tot.valor_descontos);
+
+    let custoTotal = 0;
+    itensPedido.forEach(item => {
+      const produto = item.produto;
+      if (produto) {
+        const codigoLimpo = produto.codigo?.toString().trim();
+        const quantidade = parseToNumber(produto.quantidade);
+        if (codigoLimpo && mapaProdutos[codigoLimpo]) {
+          custoTotal += quantidade * mapaProdutos[codigoLimpo];
+        } else if (codigoLimpo) {
+            console.log(`AVISO: Custo não encontrado para o produto "${codigoLimpo}" no pedido ${c.numero_pedido}.`);
+        }
+      }
+    });
+    
+    const lucro = valorTotalPedido - custoTotal;
+
+    const nomeCli = mapaClientes[(c.codigo_cliente || "").toString()] || "Cliente não encontrado";
+    const codProj = parseInt(add.codProj || add.cProjeto);
+    const nomProj = codProj ? (mapaProjetos[codProj] || "Projeto não encontrado") : "NÃO INFORMADO";
+
+    return [
+      c.numero_pedido || "ERRO",
+      info.dInc || c.data_previsao || "",
+      getDescricaoEtapaVenda(c.etapa || "00"),
+      add.numero_pedido_cliente || "NÃO PREENCHIDO",
+      valorDescontos, // Salva como número
+      valorTotalPedido, // Salva como número
+      info.cancelado === "S" ? "SIM" : "NÃO",
+      nomeCli,
+      nomProj,
+      info.dFat || "NÃO FATURADO",
+      custoTotal, // Salva como número
+      lucro, // Salva como número
+      // NOVO: Adiciona o campo DEVOLVIDO
+      info.devolvido === "S" ? "SIM" : "NÃO",
+    ];
+  });
+}
+
+// Escreve os dados formatados na planilha.
+function escreverDadosNaPlanilha(sheet, headers, dadosvenda) {
+  if (dadosvenda.length === 0) {
+    console.log("Nenhum dado para escrever na planilha.");
+    return;
+  }
+  console.log(`Escrevendo ${dadosvenda.length} linhas na planilha...`);
+  sheet.getRange(2, 1, dadosvenda.length, headers.length).setValues(dadosvenda);
+  console.log("Dados escritos com sucesso.");
+}
+
+// Aplica formatação de moeda e data nas colunas corretas.
+function formatarPlanilhaVenda(sheet) {
+  const lr = sheet.getLastRow();
+  if (lr <= 1) return;
+
+  try {
+    // Formata colunas de valor como moeda brasileira (BRL)
+    sheet.getRange("E2:F" + lr).setNumberFormat('R$ #,##0.00'); // Desconto, Total
+    sheet.getRange("K2:L" + lr).setNumberFormat('R$ #,##0.00'); // Custo, Lucro
+    
+    // Formata colunas de data
+    sheet.getRange("B2:B" + lr).setNumberFormat('dd/MM/yyyy'); // DATA ABERTURA
+    sheet.getRange("J2:J" + lr).setNumberFormat('dd/MM/yyyy'); // DATA EMISSÃO
+
+    sheet.autoResizeColumns(1, sheet.getLastColumn());
+  } catch (e) {
+    console.error("Erro ao aplicar formatação na planilha:", e.message);
+  }
+}
+
+// Mapeia o código da etapa para sua descrição.
+function getDescricaoEtapaVenda(codigoEtapa) {
+  const map = {
+    "00": "ORÇAMENTO", "10": "APROVADO", "20": "SEPARAR ESTOQUE",
+    "50": "FATURAR...", "60": "FATURADO"
+  };
+  return map[codigoEtapa] || `ETAPA ${codigoEtapa}`;
+}
+
+// Retorna as credenciais da API Omie.
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}

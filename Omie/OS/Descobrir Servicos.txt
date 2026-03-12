@@ -1,0 +1,51 @@
+/**
+ * =========================================================================
+ * FERRAMENTA: DESCOBRIR ID DO SERVIÇO (CORRIGIDA)
+ * =========================================================================
+ */
+function descobrirIDServico() {
+  const url = "https://app.omie.com.br/api/v1/servicos/servico/";
+  const { appKey, appSecret } = getCredentials();
+
+  console.log("Buscando serviços cadastrados...");
+
+  // A API de Serviços exige 'nPagina' e 'nRegPorPagina' (diferente das outras)
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "ListarCadastroServico",
+    param: [{
+      nPagina: 1,
+      nRegPorPagina: 50,
+      cExibirInativos: "N"
+    }]
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    });
+    const json = JSON.parse(response.getContentText());
+
+    if (json.cadastroServico) {
+      json.cadastroServico.forEach(s => {
+        // COPIE ESTE NÚMERO (nCodServico)
+        console.log(`>>> NOME: ${s.cDescricao} | ID (nCodServico): ${s.nCodServico} | Cód.Int: ${s.cCodigo}`);
+      });
+    } else {
+      console.log("Nenhum serviço encontrado ou erro:", json);
+    }
+  } catch (e) {
+    console.error("Erro fatal:", e);
+  }
+}
+
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}

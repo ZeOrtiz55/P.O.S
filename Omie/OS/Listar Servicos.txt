@@ -1,0 +1,48 @@
+function raioX_Servico_Detalhado() {
+  const url = "https://app.omie.com.br/api/v1/servicos/servico/";
+  const { appKey, appSecret } = getCredentials(); // Reutiliza suas credenciais
+
+  console.log(">>> PEGANDO ESTRUTURA COMPLETA DE UM SERVIÇO...");
+
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "ListarCadastroServico",
+    param: [{
+      nPagina: 1,
+      nRegPorPagina: 1 // Traz apenas 1 para facilitar a leitura
+    }]
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    });
+    
+    const json = JSON.parse(response.getContentText());
+
+    if (json.cadastros && json.cadastros.length > 0) {
+      const servico = json.cadastros[0];
+      
+      console.log("--- ESTRUTURA COMPLETA DO PRIMEIRO ITEM ---");
+      // Imprime o objeto JSON inteiro formatado
+      console.log(JSON.stringify(servico, null, 2)); 
+      console.log("-------------------------------------------");
+      
+    } else {
+      console.log("Nada encontrado ou erro:", json);
+    }
+  } catch (e) {
+    console.error("Erro fatal:", e);
+  }
+}
+
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}

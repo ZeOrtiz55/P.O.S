@@ -1,0 +1,93 @@
+/**
+ * =========================================================================
+ * FERRAMENTA DE DESCOBERTA DE IDs (VERSÃO CORRIGIDA)
+ * =========================================================================
+ */
+function descobrirIDsFinais() {
+  console.log("=== 1. BUSCANDO CONTAS CORRENTES ===");
+  listarContasCorrentes();
+
+  console.log("\n=== 2. BUSCANDO CÓDIGO DO SERVIÇO ===");
+  listarCadastroServico();
+}
+
+function listarContasCorrentes() {
+  const url = "https://app.omie.com.br/api/v1/geral/contacorrente/";
+  const { appKey, appSecret } = getCredentials();
+
+  // CORREÇÃO: Removido o filtro 'apenas_ativas' que causava erro
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "ListarContasCorrentes",
+    param: [{
+      pagina: 1,
+      registros_por_pagina: 50
+    }]
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    });
+    const json = JSON.parse(response.getContentText());
+
+    if (json.conta_corrente_cadastro) {
+      json.conta_corrente_cadastro.forEach(cc => {
+        // AQUI ESTÁ O NÚMERO QUE VOCÊ PRECISA (nCodCC)
+        console.log(`> CONTA: [ ${cc.descricao} ] --- ID (nCodCC): ${cc.nCodCC}`);
+      });
+    } else {
+      console.log("Resposta da API (Contas):", json);
+    }
+  } catch (e) {
+    console.error("Erro Contas:", e);
+  }
+}
+
+function listarCadastroServico() {
+  const url = "https://app.omie.com.br/api/v1/servicos/servico/";
+  const { appKey, appSecret } = getCredentials();
+
+  // CORREÇÃO: Nome da chamada corrigido para 'ListarCadastroServico'
+  const payload = {
+    app_key: appKey,
+    app_secret: appSecret,
+    call: "ListarCadastroServico",
+    param: [{
+      pagina: 1,
+      registros_por_pagina: 50
+    }]
+  };
+
+  try {
+    const response = UrlFetchApp.fetch(url, {
+      method: "post",
+      contentType: "application/json",
+      payload: JSON.stringify(payload),
+      muteHttpExceptions: true
+    });
+    const json = JSON.parse(response.getContentText());
+
+    if (json.cadastroServico) {
+      json.cadastroServico.forEach(s => {
+         // AQUI ESTÁ O NÚMERO QUE VOCÊ PRECISA (nCodServico)
+        console.log(`> SERVIÇO: [ ${s.cDescricao} ] --- ID (nCodServico): ${s.nCodServico} (Preço: ${s.nPrecoUnitario})`);
+      });
+    } else {
+       console.log("Nenhum serviço encontrado. Resposta:", json);
+    }
+  } catch (e) {
+    console.error("Erro Serviços:", e);
+  }
+}
+
+function getCredentials() {
+  return {
+    appKey: "2729522270475",
+    appSecret: "113d785bb86c48d064889d4d73348131"
+  };
+}

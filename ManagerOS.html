@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <title>Nova Tratores | Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <?!= include('ManagerOS_CSS') ?>
+</head>
+<body>
+
+<div id="loading"><div class="spinner-inner"></div> Processando...</div>
+
+<!-- ============ HEADER ============ -->
+<header>
+    <div class="brand-area"><div class="brand-icon"><i class="fas fa-tractor"></i></div><div style="font-size:20px; font-weight:700">NOVA TRATORES</div></div>
+    <div class="search-box" style="position:relative">
+        <i class="fas fa-search" style="position:absolute; left:15px; top:50%; transform:translateY(-50%); color:#94A3B8;"></i>
+        <input type="text" id="globalSearch" class="search-input" placeholder="Pesquisar cliente ou OS...">
+    </div>
+    <div class="header-actions">
+        <button id="btnRelatGeral" class="btn-top btn-report" onclick="imprimirRelatorioGeral()"><i class="fas fa-file-invoice"></i> GERAR RELATÓRIO</button>
+        <button id="btnCriarCliHeader" class="btn-top btn-cli" onclick="openCliDrawer()"><i class="fas fa-user-plus"></i> CRIAR CLIENTE</button>
+        <button id="btnNovaOSHeader" class="btn-top btn-new" onclick="openDrawer('create')"><i class="fas fa-plus"></i> NOVA ORDEM</button>
+        <a href="https://script.google.com/macros/s/AKfycbwatRqLXXJBbRq6QHJtD8PaZQYaUjL5sN1N1rPDcHuKjz0HzVRFn2bLbT6DHZu_rCh_/exec" target="_top" class="btn-top btn-menu"><i class="fas fa-home"></i> MENU</a>
+    </div>
+</header>
+
+<!-- ============ FILTROS + KANBAN ============ -->
+<div class="filter-bar" id="filterBar"></div>
+
+<main class="kanban-wrapper">
+    <div class="card-grid" id="cardGrid"></div>
+</main>
+
+<!-- ============ MODAL ORDEM DE SERVIÇO ============ -->
+<div class="drawer-overlay" id="overlay">
+    <div class="modal-container">
+        <div class="drawer" id="drawer">
+            <div style="padding:25px 40px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:#fafafa;">
+                <div id="dTitle" style="font-size:20px; font-weight:700;">Ordem de Serviço</div>
+                <div style="display:flex; gap:10px;">
+                    <button id="btnToggleLog" onclick="toggleLogs()" style="background:#EEF2FF; color:var(--primary); border:1px solid var(--primary); padding:8px 15px; border-radius:6px; font-weight:600; cursor:pointer">Histórico</button>
+                    <button style="background:none; border:none; font-size:24px; cursor:pointer" onclick="closeD()">&times;</button>
+                </div>
+            </div>
+
+            <div style="padding:30px 40px; flex:1; overflow-y:auto;">
+                <form id="mainForm">
+                    <input type="hidden" id="formMode"><input type="hidden" id="osId"><input type="hidden" id="nmCli"><input type="hidden" id="cpfCli"><input type="hidden" id="endCli">
+
+                    <div id="selCliArea">
+                        <label class="required">Cliente</label>
+                        <select id="clienteChave" class="use-select2"></select>
+                    </div>
+
+                    <div id="clientInfo" style="display:none; padding:12px; background:#F0F9FF; border-left:4px solid #0EA5E9; color:#0369A1; font-weight:600; border-radius:4px; margin-bottom:20px;"></div>
+
+                    <div id="editStatusRow" style="display:none">
+                        <label>Status</label>
+                        <select id="osStatus" style="font-weight:600">
+                            <option>Orçamento</option>
+                            <option>Orçamento enviado para o cliente e aguardando</option>
+                            <option>Execução</option>
+                            <option>Execução Procurando peças</option>
+                            <option>Execução aguardando peças (em transporte)</option>
+                            <option>Executada</option>
+                            <option>Executada aguardando cliente</option>
+                            <option>Executada aguardando comercial</option>
+                            <option>Concluída</option>
+                            <option>Cancelada</option>
+                        </select>
+                    </div>
+
+                    <div id="divOmie" style="display:none"><label style="color:#065F46">Nº Ordem Omie</label><input type="text" id="osOmie"></div>
+                    <div id="divMotivoCancel" style="display:none"><label style="color:#991B1B">Motivo do Cancelamento</label><textarea id="osMotivoCancel" rows="2"></textarea></div>
+
+                    <div id="vinculosArea" style="display:none;"><label>Vínculos Ativos</label><div id="linksContainer"></div></div>
+
+                    <div style="display:flex; gap:20px;">
+                        <div style="flex:1"><label>Técnico Responsável</label><select id="tecnicoResponsavel"></select></div>
+                        <div style="flex:1"><label>Segundo Técnico</label><select id="tecnico2"></select></div>
+                    </div>
+
+                    <div style="display:flex; gap:20px;">
+                        <div style="flex:1">
+                            <label>Tipo de Atendimento</label>
+                            <select id="tipoServico" onchange="toggleTipoServico()">
+                                <option value="Manutenção">Manutenção</option>
+                                <option value="Revisão">Revisão</option>
+                            </select>
+                        </div>
+                        <div style="flex:2">
+                            <label>Projeto / Equipamento (Chassis)</label>
+                            <input type="text" id="osProjetoDisplay" placeholder="Clique para pesquisar por chassis ou nome..." onclick="abrirBuscaProjeto()" readonly style="cursor:pointer; background:#fff; font-weight:600;">
+                            <input type="hidden" id="osProjetoValue">
+                        </div>
+                    </div>
+
+                    <div id="areaRevisao" style="display:none;">
+                        <label style="color:var(--primary)">Plano de Revisão Selecionado</label>
+                        <input type="text" id="osRevisaoDisplay" placeholder="Clique para pesquisar revisão pronta..." onclick="abrirBuscaRevisao()" readonly style="cursor:pointer; border-color:var(--primary); font-weight:600;">
+                        <input type="hidden" id="osRevisaoId">
+                    </div>
+
+                    <div id="bombaAlert" class="alert-box alert-warning"><i class="fas fa-exclamation-triangle"></i> Lembrete: Oferecer para o cliente Fazer limpeza na bomba injetora.</div>
+
+                    <label>Descrição do Serviço</label>
+                    <textarea id="servicoSolicitado" rows="12" style="font-family: monospace;"></textarea>
+
+                    <div id="editFields" style="display:none;">
+                        <label>PPV / Requisições (Separe por vírgula)</label>
+                        <input type="text" id="osPPV" onblur="loadPPV()">
+                        <ul id="listaProdutos" style="list-style:none; padding:0; font-size:12px; color:#666; margin-bottom:15px;"></ul>
+                    </div>
+
+                    <div style="display:flex; gap:20px; background:#F8FAFC; padding:15px; border-radius:8px; border:1px solid #E2E8F0; margin-bottom:15px;">
+                        <div style="flex:1"><label>Desc. (%)</label><input type="number" id="descPorc" value="0" step="0.01" oninput="syncDiscount('P')"></div>
+                        <div style="flex:1"><label>Desc. (R$)</label><input type="number" id="descValor" value="0" step="0.01" oninput="syncDiscount('V')"></div>
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+                        <div style="display:flex; gap:15px;">
+                            <div style="width:100px;"><label>Horas</label><input type="number" id="qtdHoras" value="0" oninput="calcTotal()"></div>
+                            <div style="width:100px;"><label>KM</label><input type="number" id="qtdKm" value="0" oninput="calcTotal()"></div>
+                        </div>
+                        <div id="totalDisplay" style="font-size:28px; font-weight:700; color:var(--primary)">R$ 0,00</div>
+                    </div>
+                </form>
+            </div>
+
+            <div style="padding:20px 40px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; gap:15px; background:#fafafa;">
+                <button id="btnPrint" onclick="reimprimir()" style="background:white; border:1px solid var(--border); padding:12px 20px; border-radius:6px; cursor:pointer; font-weight:600; display:none">Imprimir</button>
+                <button id="btnSalvarOS" onclick="salvar()" style="padding:12px 30px; background:var(--primary); color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer">Salvar OS</button>
+            </div>
+        </div>
+        <div class="log-panel" id="logPanel">
+            <div style="padding:20px; background:#F8FAFC; border-bottom:1px solid var(--border); font-weight:700;">Histórico</div>
+            <div id="logContent" style="flex:1; overflow-y:auto; max-height:75vh;"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODAL BUSCA REVISÃO ============ -->
+<div id="searchRevModal" class="drawer-overlay" style="z-index: 1001;" onclick="if(event.target === this) fecharBuscaRevisao()">
+    <div class="drawer" style="width:700px; display:block; padding:0;">
+        <div style="padding:20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:700;">Pesquisar Revisão Pronta</div>
+            <button style="background:none; border:none; font-size:20px; cursor:pointer" onclick="fecharBuscaRevisao()">&times;</button>
+        </div>
+        <div style="padding:20px;">
+            <input type="text" id="inputBuscaRev" placeholder="Digite termos da revisão e aperte Enter..." onkeyup="if(event.key==='Enter') executarBuscaRev()">
+            <div style="max-height: 350px; overflow-y: auto; border:1px solid var(--border); border-radius:6px;">
+                <table style="width:100%; border-collapse:collapse;"><tbody id="resultadoBuscaRev"></tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODAL BUSCA PROJETO ============ -->
+<div id="searchProjModal" class="drawer-overlay" style="z-index: 1001;" onclick="if(event.target === this) fecharBuscaProjeto()">
+    <div class="drawer" style="width:700px; display:block; padding:0;">
+        <div style="padding:20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:700;">Pesquisar Equipamento / Chassis</div>
+            <button style="background:none; border:none; font-size:20px; cursor:pointer" onclick="fecharBuscaProjeto()">&times;</button>
+        </div>
+        <div style="padding:20px;">
+            <input type="text" id="inputBuscaProj" placeholder="Digite chassis, modelo ou número do projeto..." onkeyup="if(event.key==='Enter') executarBuscaProj()">
+            <div style="max-height: 350px; overflow-y: auto; border:1px solid var(--border); border-radius:6px;">
+                <table style="width:100%; border-collapse:collapse;"><tbody id="resultadoBuscaProj"></tbody></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MODAL NOVO CLIENTE ============ -->
+<div class="drawer-overlay" id="cliOverlay">
+    <div class="modal-container">
+        <div class="drawer" style="width:600px; display:block;">
+            <div style="padding:25px 40px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; background:#fafafa;">
+                <div style="font-size:20px; font-weight:700;">Novo Cliente Manual</div>
+                <button style="background:none; border:none; font-size:24px; cursor:pointer" onclick="closeCliD()">&times;</button>
+            </div>
+            <div style="padding:30px 40px;">
+                <form id="cliForm">
+                    <label>Nome Completo</label><input type="text" id="cliNome">
+                    <label>CPF / CNPJ</label><input type="text" id="cliCpf">
+                    <label>E-mail</label><input type="email" id="cliEmail">
+                    <label>Telefone</label><input type="text" id="cliFone">
+                    <label>Endereço</label><input type="text" id="cliEnd">
+                    <label>Cidade</label><input type="text" id="cliCidade">
+                </form>
+            </div>
+            <div style="padding:20px 40px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; background:#fafafa;">
+                <button id="btnSalvarCli" onclick="salvarCliente()" style="padding:12px 30px; background:#10B981; color:white; border:none; border-radius:6px; font-weight:600; cursor:pointer">Cadastrar Cliente</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?!= include('ManagerOS_JS') ?>
+</body>
+</html>

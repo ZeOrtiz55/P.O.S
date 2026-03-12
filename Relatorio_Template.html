@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório Geral Oficina</title>
+    <style>
+        @page { margin: 0.8cm; size: A4 landscape; }
+        body { font-family: 'Helvetica', Arial, sans-serif; font-size: 9pt; color: #333; margin: 0; padding: 20px; }
+        .header { border-bottom: 2px solid #002E5D; padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .title { font-size: 16pt; font-weight: 900; color: #002E5D; text-transform: uppercase; }
+        .meta { font-size: 8pt; color: #666; }
+        .phase-section { margin-bottom: 30px; page-break-inside: avoid; }
+        .phase-header { background: #f1f5f9; padding: 8px 15px; border-left: 5px solid #6366F1; font-weight: 900; color: #1e293b; text-transform: uppercase; margin-bottom: 10px; font-size: 10pt; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        th { background: #f8fafc; text-align: left; font-size: 7pt; color: #64748B; text-transform: uppercase; padding: 8px; border-bottom: 2px solid #e2e8f0; }
+        td { padding: 8px; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+        .os-id { font-weight: 900; color: #000; }
+        .os-client { font-weight: 600; color: #334155; }
+        .time-badge { padding: 2px 8px; border-radius: 4px; font-size: 8pt; font-weight: bold; }
+        .time-total { background: #eef2ff; color: #6366F1; }
+        .footer { margin-top: 50px; text-align: center; font-size: 7pt; color: #aaa; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div>
+            <div class="title">Relatório Geral de Ordens de Serviço</div>
+            <div class="meta">Nova Tratores Máquinas Agrícolas Ltda</div>
+        </div>
+        <div class="meta" style="text-align:right">EMISSÃO: <?= dataGeracao ?></div>
+    </div>
+
+    <?
+    // UPGRADE: Removidas fases Concluída e Cancelada do Relatório
+    const REL_PHASES = ['Orçamento', 'Orçamento enviado para o cliente e aguardando', 'Execução', 'Execução Procurando peças', 'Execução aguardando peças (em transporte)', 'Executada', 'Executada aguardando cliente', 'Executada aguardando comercial'];
+
+    REL_PHASES.forEach(phase => {
+        const filtradas = ordens.filter(o => o.status === phase);
+        if (filtradas.length > 0) {
+    ?>
+        <div class="phase-section">
+            <div class="phase-header"><?= phase ?> (<?= filtradas.length ?>)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="80">ID OS</th>
+                        <th width="200">Cliente / Razão Social</th>
+                        <th width="150">Técnico</th>
+                        <th width="120">Valor Total</th>
+                        <th width="100">Dias Aberto</th>
+                        <th>Solicitação do Cliente</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <? filtradas.forEach(o => {
+                        let hoje = new Date().setHours(0,0,0,0);
+                        let p = o.data.split('/'); let diasTotal = Math.floor((hoje - new Date(p[2], p[1]-1, p[0]).setHours(0,0,0,0)) / 86400000);
+                    ?>
+                        <tr>
+                            <td class="os-id">#<?= o.id ?></td>
+                            <td class="os-client"><?= o.cliente ?></td>
+                            <td><?= o.tecnico ?></td>
+                            <td style="font-weight:bold; color:#10B981">R$ <?= o.valor ?></td>
+                            <td><span class="time-badge time-total"><?= diasTotal ?> dias</span></td>
+                            <td style="font-size:8pt; color:#666;"><?= o.servSolicitado ?></td>
+                        </tr>
+                    <? }); ?>
+                </tbody>
+            </table>
+        </div>
+    <?
+        }
+    });
+    ?>
+
+    <div class="footer">
+        Relatório gerado automaticamente pelo Sistema Nova Tratores Manager. Total de Ordens Ativas: <?= ordens.filter(o => !['Concluída', 'Cancelada'].includes(o.status)).length ?>
+    </div>
+</body>
+</html>
