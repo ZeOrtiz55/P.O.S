@@ -1,65 +1,165 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
+import Header from "@/components/Header";
+import PhaseAccordion from "@/components/PhaseAccordion";
+import OSDrawer from "@/components/OSDrawer";
+import ClientDrawer from "@/components/ClientDrawer";
+import LoadingIndicator from "@/components/LoadingIndicator";
+import type { KanbanCard, ClienteOption } from "@/lib/types";
 
 export default function Home() {
+  const [orders, setOrders] = useState<KanbanCard[]>([]);
+  const [clientes, setClientes] = useState<ClienteOption[]>([]);
+  const [tecnicos, setTecnicos] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Drawer states
+  const [drawerVisible, setDrawerVisible] = useState(false);
+  const [drawerMode, setDrawerMode] = useState<"create" | "edit">("create");
+  const [selectedOsId, setSelectedOsId] = useState<string | null>(null);
+  const [clientDrawerVisible, setClientDrawerVisible] = useState(false);
+
+  const fetchOrders = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/ordens");
+      const data = await res.json();
+      setOrders(data);
+    } catch (err) {
+      console.error("Erro ao carregar ordens:", err);
+    }
+    setLoading(false);
+  }, []);
+
+  const fetchClientes = useCallback(async () => {
+    try {
+      const res = await fetch("/api/clientes");
+      const data = await res.json();
+      setClientes(data);
+    } catch (err) {
+      console.error("Erro ao carregar clientes:", err);
+    }
+  }, []);
+
+  const fetchTecnicos = useCallback(async () => {
+    try {
+      const res = await fetch("/api/tecnicos");
+      const data = await res.json();
+      setTecnicos(data);
+    } catch (err) {
+      console.error("Erro ao carregar técnicos:", err);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchOrders();
+    fetchClientes();
+    fetchTecnicos();
+  }, [fetchOrders, fetchClientes, fetchTecnicos]);
+
+  // Auto-sync every 60 seconds
+  useEffect(() => {
+    const interval = setInterval(fetchOrders, 60000);
+    return () => clearInterval(interval);
+  }, [fetchOrders]);
+
+  const handleNewOS = () => {
+    setDrawerMode("create");
+    setSelectedOsId(null);
+    setDrawerVisible(true);
+  };
+
+  const handleCardClick = (order: KanbanCard) => {
+    setDrawerMode("edit");
+    setSelectedOsId(order.id);
+    setDrawerVisible(true);
+  };
+
+  const handlePhaseChange = async (orderId: string, newPhase: string) => {
+    // Atualiza localmente para feedback imediato
+    setOrders((prev) => prev.map((o) => o.id === orderId ? { ...o, status: newPhase } : o));
+    try {
+      const res = await fetch(`/api/ordens/${orderId}/fase`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newPhase }),
+      });
+      const data = await res.json();
+      if (!res.ok || data.erro) {
+        alert(data.erro || "Erro ao mudar fase");
+      }
+      fetchOrders();
+    } catch (err) {
+      console.error("Erro ao mudar fase:", err);
+      fetchOrders();
+    }
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerVisible(false);
+    setSelectedOsId(null);
+  };
+
+  const handleSaved = () => {
+    fetchOrders();
+  };
+
+  const handleGenerateReport = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/relatorio");
+      const html = await res.text();
+      const w = window.open("", "_blank");
+      if (w) {
+        w.document.write(html);
+        w.document.close();
+      }
+    } catch (err) {
+      console.error("Erro ao gerar relatório:", err);
+      alert("Erro ao gerar relatório.");
+    }
+    setLoading(false);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <LoadingIndicator visible={loading} />
+      <Header
+        searchTerm={searchTerm}
+        onSearch={setSearchTerm}
+        onNewOS={handleNewOS}
+        onNewClient={() => setClientDrawerVisible(true)}
+        onGenerateReport={handleGenerateReport}
+      />
+      <PhaseAccordion
+        orders={orders}
+        searchTerm={searchTerm}
+        onCardClick={handleCardClick}
+        onPhaseChange={handlePhaseChange}
+      />
+
+      {drawerVisible && (
+        <OSDrawer
+          visible={drawerVisible}
+          mode={drawerMode}
+          osId={selectedOsId}
+          clientes={clientes}
+          tecnicos={tecnicos}
+          onClose={handleDrawerClose}
+          onSaved={handleSaved}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      )}
+
+      <ClientDrawer
+        visible={clientDrawerVisible}
+        onClose={() => setClientDrawerVisible(false)}
+        onSaved={() => {
+          setClientDrawerVisible(false);
+          fetchClientes();
+        }}
+      />
+    </>
   );
 }
