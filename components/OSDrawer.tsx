@@ -653,12 +653,15 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
         onSelect={(item) => {
           const nome = item.nome || "";
           setProjeto(nome);
+          const partes = nome.trim().split(/\s+/);
+          const modelo = partes[0] || "";
+          const chassis = partes.slice(1).join(" ") || "";
           if (!servSolicitado || servSolicitado.trim() === "" || servSolicitado === TEXT_TEMPLATE) {
-            setServSolicitado(`Modelo: ${nome}\nChassis: ${nome}\nHorimetro: \n\nSolicitação do cliente: \nServiço Realizado: `);
+            setServSolicitado(`Modelo: ${modelo}\nChassis: ${chassis}\nHorimetro: \n\nSolicitação do cliente: \nServiço Realizado: `);
           } else {
             const lines = servSolicitado.split("\n");
-            if (lines[0]?.trim() === "Modelo:") lines[0] = "Modelo: " + nome;
-            if (lines[1]?.trim() === "Chassis:") lines[1] = "Chassis: " + nome;
+            if (lines[0]?.trim() === "Modelo:") lines[0] = "Modelo: " + modelo;
+            if (lines[1]?.trim() === "Chassis:") lines[1] = "Chassis: " + chassis;
             setServSolicitado(lines.join("\n"));
           }
         }}
