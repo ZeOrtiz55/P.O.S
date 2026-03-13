@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd C:/projetos/pos/pos && npx tsc --noEmit 2>&1 | head -30)"
+    ]
+  }
+}

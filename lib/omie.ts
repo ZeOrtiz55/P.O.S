@@ -208,7 +208,6 @@ async function buscarNcodProj(projeto: string): Promise<number> {
 
     const projetos = result.cadastro || [];
     for (const p of projetos) {
-      // Match exato ou parcial (chassis contido no nome do projeto)
       if (
         p.nome === projetoNorm ||
         p.nome.includes(projetoNorm) ||
@@ -426,10 +425,13 @@ export async function criarOSNoOmie(idOrdem: string): Promise<{ sucesso: boolean
       payload as unknown as Record<string, unknown>
     );
 
-    // Grava nCodOS no campo Ordem_Omie
+    // Grava número da OS Omie e o código interno (id_omie)
     await supabase
       .from(TBL_OS)
-      .update({ Ordem_Omie: resposta.cNumOS || String(resposta.nCodOS) })
+      .update({
+        Ordem_Omie: resposta.cNumOS || String(resposta.nCodOS),
+        id_omie: resposta.cNumOS || String(resposta.nCodOS),
+      })
       .eq("Id_Ordem", idOrdem);
 
     console.log(`[Omie] ✓ ${idOrdem} → OS nº ${resposta.cNumOS} (ID: ${resposta.nCodOS})`);
