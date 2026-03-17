@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import PhaseAccordion from "@/components/PhaseAccordion";
 import OSDrawer from "@/components/OSDrawer";
 import ClientDrawer from "@/components/ClientDrawer";
+import LembretesDrawer from "@/components/LembretesDrawer";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import type { KanbanCard, ClienteOption } from "@/lib/types";
 
@@ -20,6 +21,7 @@ export default function Home() {
   const [drawerMode, setDrawerMode] = useState<"create" | "edit">("create");
   const [selectedOsId, setSelectedOsId] = useState<string | null>(null);
   const [clientDrawerVisible, setClientDrawerVisible] = useState(false);
+  const [lembretesVisible, setLembretesVisible] = useState(false);
 
   const fetchOrders = useCallback(async () => {
     setLoading(true);
@@ -156,6 +158,7 @@ export default function Home() {
         onNewClient={() => setClientDrawerVisible(true)}
         onGenerateReport={handleGenerateReport}
         onSync={handleSync}
+        onLembretes={() => setLembretesVisible(true)}
       />
       <PhaseAccordion
         orders={orders}
@@ -175,6 +178,12 @@ export default function Home() {
           onSaved={handleSaved}
         />
       )}
+
+      <LembretesDrawer
+        visible={lembretesVisible}
+        clientes={clientes}
+        onClose={() => setLembretesVisible(false)}
+      />
 
       <ClientDrawer
         visible={clientDrawerVisible}

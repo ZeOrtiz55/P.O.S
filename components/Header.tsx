@@ -9,9 +9,10 @@ interface HeaderProps {
   onNewClient: () => void;
   onGenerateReport: () => void;
   onSync?: () => Promise<void>;
+  onLembretes?: () => void;
 }
 
-export default function Header({ searchTerm, onSearch, onNewOS, onNewClient, onGenerateReport, onSync }: HeaderProps) {
+export default function Header({ searchTerm, onSearch, onNewOS, onNewClient, onGenerateReport, onSync, onLembretes }: HeaderProps) {
   const [syncing, setSyncing] = useState(false);
 
   const handleSync = async () => {
@@ -38,6 +39,7 @@ export default function Header({ searchTerm, onSearch, onNewOS, onNewClient, onG
         <button className="btn-top btn-report" onClick={handleSync} disabled={syncing} title="Sincronizar clientes e projetos do Omie">
           <i className={`fas fa-sync-alt${syncing ? " fa-spin" : ""}`} /> {syncing ? "SINCRONIZANDO..." : "SINCRONIZAR"}
         </button>
+        <button className="btn-top btn-lembretes" onClick={onLembretes}><i className="fas fa-bell" /> LEMBRETES</button>
         <button className="btn-top btn-report" onClick={onGenerateReport}><i className="fas fa-file-invoice" /> GERAR RELATÓRIO</button>
         <button className="btn-top btn-cli" onClick={onNewClient}><i className="fas fa-user-plus" /> CRIAR CLIENTE</button>
         <button className="btn-top btn-new" onClick={onNewOS}><i className="fas fa-plus" /> NOVA ORDEM</button>

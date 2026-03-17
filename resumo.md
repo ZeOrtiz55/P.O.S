@@ -45,14 +45,18 @@ pos/
 │       ├── logs/route.ts           ← GET (logs de uma OS)
 │       ├── relatorio/route.ts      ← GET (relatório geral HTML)
 │       ├── sync/route.ts           ← GET/POST (sync Omie → Supabase)
+│       ├── lembretes/
+│       │   ├── route.ts            ← GET (listar/filtrar) + POST (criar lembrete)
+│       │   └── [id]/route.ts       ← PATCH (editar) + DELETE (excluir)
 │       └── buscas/
 │           ├── projetos/route.ts   ← GET (busca equipamentos/chassis)
 │           └── revisoes/route.ts   ← GET (busca revisões prontas)
 ├── components/
-│   ├── Header.tsx                  ← Barra superior (busca, sync, relatório, criar)
+│   ├── Header.tsx                  ← Barra superior (busca, sync, relatório, lembretes, criar)
 │   ├── PhaseAccordion.tsx          ← Tabs de fase + grid de cards + dropdown de fase
-│   ├── OSDrawer.tsx                ← Drawer principal (criar/editar OS)
+│   ├── OSDrawer.tsx                ← Drawer principal (criar/editar OS) + alerta de lembretes
 │   ├── ClientDrawer.tsx            ← Drawer para criar cliente
+│   ├── LembretesDrawer.tsx         ← Drawer para gerenciar lembretes de clientes
 │   ├── SearchModal.tsx             ← Modal de busca (projetos, revisões)
 │   ├── LogPanel.tsx                ← Painel de histórico de logs
 │   └── LoadingIndicator.tsx        ← Spinner global
@@ -86,6 +90,7 @@ pos/
 | `TBL_REQ_ATT` | `Atualizar_Req` | Requisições atualizadas |
 | `TBL_REV_PRONTAS` | `Revisoes_Pronta` | Planos de revisão prontos |
 | `TBL_METRICAS` | `tecnico_metricas` | Métricas de desempenho dos técnicos |
+| `TBL_LEMBRETES` | `lembretes_clientes` | Lembretes associados a clientes |
 
 ### Colunas da `Ordem_Servico`
 ```
@@ -116,6 +121,14 @@ id_pedido, cliente, tecnico, status, data, valor_total, observacao,
 motivo_cancelamento, Motivo_Saida_Pedido, pedido_omie, email_usuario,
 Id_Os, Tipo_Pedido
 ```
+
+### Colunas da `lembretes_clientes`
+```
+id (serial PK), cliente_chaves (text[]), cliente_nomes (text),
+lembrete (text), ativo (boolean), created_at (timestamptz), updated_at (timestamptz)
+```
+- `cliente_chaves` é um array de chaves (ex: `{"OMIE:123","MANUAL:45"}`)
+- `cliente_nomes` armazena nomes para display e busca por nome
 
 ### Colunas da `Clientes` (importados do Omie)
 ```
@@ -189,6 +202,21 @@ Busca projetos por nome (top 50, multi-termo).
 
 ### `GET /api/buscas/revisoes?termo=texto`
 Busca revisões prontas.
+
+### `GET /api/lembretes`
+Lista todos os lembretes. Com `?cliente=OMIE:123` filtra por chave de cliente. Com `?nome=Nome` filtra por nome.
+**Retorno:** `{ id, cliente_chaves, cliente_nomes, lembrete, ativo, created_at }[]`
+
+### `POST /api/lembretes`
+Cria lembrete vinculado a um ou mais clientes.
+**Body:** `{ cliente_chaves: string[], cliente_nomes: string, lembrete: string }`
+
+### `PATCH /api/lembretes/[id]`
+Atualiza lembrete (texto, clientes, ativo/inativo).
+**Body:** `{ lembrete?, cliente_chaves?, cliente_nomes?, ativo? }`
+
+### `DELETE /api/lembretes/[id]`
+Exclui lembrete permanentemente.
 
 ### `GET /api/relatorio`
 Relatório HTML de ordens abertas por fase (auto-print A4 landscape).
@@ -328,8 +356,16 @@ Faixas: 50, 300, 600, 900, 1200, 1500, 1800, 2100, 2400, 2700, 3000h
 - +1 dia em Execução → Aguardando ordem Técnico (+ métrica atraso)
 - `Previsao_Faturamento <= hoje` → Executada aguardando comercial → Executada aguardando cliente
 
+### Lembretes de Clientes
+- Botão "LEMBRETES" no header abre LembretesDrawer
+- Busca clientes com checkbox para seleção múltipla + botão "Confirmar Seleção"
+- Criar, editar, excluir e ativar/desativar lembretes
+- Ao selecionar cliente na OS (criar) ou abrir OS (editar), exibe alerta laranja com lembrete
+- Lembrete editável inline direto no drawer da OS
+
 ### Integração Omie
 - Envio manual de OS para Omie (botão no drawer)
+- Email do cliente preenchido automaticamente no campo `cEnviarPara` da OS Omie
 - Criação automática de Pedido de Venda se tiver PPVs
 - Fechamento automático de PPVs após envio
 - Sincronização de status POS → PPV
@@ -387,6 +423,18 @@ ALTER TABLE "Ordem_Servico"
   ADD COLUMN IF NOT EXISTS "Previsao_Faturamento" DATE,
   ADD COLUMN IF NOT EXISTS "Desconto_Hora" NUMERIC DEFAULT 0,
   ADD COLUMN IF NOT EXISTS "Desconto_KM" NUMERIC DEFAULT 0;
+
+-- Tabela de lembretes de clientes
+CREATE TABLE lembretes_clientes (
+  id SERIAL PRIMARY KEY,
+  cliente_chaves TEXT[] NOT NULL,
+  cliente_nomes TEXT NOT NULL DEFAULT '',
+  lembrete TEXT NOT NULL,
+  ativo BOOLEAN NOT NULL DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX idx_lembretes_cliente_chaves ON lembretes_clientes USING GIN (cliente_chaves);
 ```
 
 ---

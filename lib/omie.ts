@@ -144,39 +144,33 @@ function toNum(val: unknown, fallback = 0): number {
 // --- Lookup de cliente ---
 const cacheClientes = new Map<string, number>();
 
-async function buscarNcodCli(cnpj: string): Promise<number> {
+async function buscarNcodCli(cnpj: string): Promise<{ nCodCli: number; email: string }> {
   const cnpjNorm = normalizarCnpj(cnpj);
 
-  if (cacheClientes.has(cnpjNorm)) {
-    return cacheClientes.get(cnpjNorm)!;
-  }
-
-  // Tenta buscar na tabela Clientes do Supabase (campo id_omie)
+  // Tenta buscar na tabela Clientes do Supabase (campo id_omie + email)
   const { data } = await supabase
     .from(TBL_CLIENTES)
-    .select("id_omie, cnpj_cpf")
+    .select("id_omie, cnpj_cpf, email")
     .ilike("cnpj_cpf", `%${cnpjNorm.substring(0, 8)}%`)
     .limit(1);
 
   if (data && data.length > 0 && data[0].id_omie) {
-    cacheClientes.set(cnpjNorm, data[0].id_omie);
-    return data[0].id_omie;
+    return { nCodCli: data[0].id_omie, email: data[0].email || "" };
   }
 
   // Fallback: busca direto na API Omie
-  const result = await omieCall<{ clientes_cadastro?: Array<{ codigo_cliente_omie: number }> }>(
+  const result = await omieCall<{ clientes_cadastro?: Array<{ codigo_cliente_omie: number; email?: string }> }>(
     "/geral/clientes/",
     "ListarClientes",
     { pagina: 1, registros_por_pagina: 1, clientesFiltro: { cnpj_cpf: cnpj } }
   );
 
-  const nCodCli = result?.clientes_cadastro?.[0]?.codigo_cliente_omie;
-  if (!nCodCli) {
+  const cliente = result?.clientes_cadastro?.[0];
+  if (!cliente?.codigo_cliente_omie) {
     throw new Error(`Cliente não encontrado no Omie para CNPJ: ${cnpj}`);
   }
 
-  cacheClientes.set(cnpjNorm, nCodCli);
-  return nCodCli;
+  return { nCodCli: cliente.codigo_cliente_omie, email: cliente.email || "" };
 }
 
 // --- Lookup de projeto ---
@@ -389,7 +383,7 @@ export async function criarOSNoOmie(idOrdem: string): Promise<{ sucesso: boolean
   }
 
   try {
-    const nCodCli = await buscarNcodCli(os.Cnpj_Cliente);
+    const { nCodCli, email: emailCliente } = await buscarNcodCli(os.Cnpj_Cliente);
     const nCodProj = await buscarNcodProj(String(os.Projeto || ""));
     const nCodVend = await buscarNcodVend(String(os.Os_Tecnico || ""), String(os.Os_Tecnico2 || ""));
 
@@ -415,7 +409,7 @@ export async function criarOSNoOmie(idOrdem: string): Promise<{ sucesso: boolean
       Email: {
         cEnvBoleto: "N",
         cEnvLink: "N",
-        cEnviarPara: "",
+        cEnviarPara: emailCliente,
       },
     };
 

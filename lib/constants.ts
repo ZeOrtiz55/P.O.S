@@ -12,6 +12,7 @@ export const TBL_REQ_SOL = "Solicitacao_Requisicao";
 export const TBL_REQ_ATT = "Atualizar_Req";
 export const TBL_REV_PRONTAS = "Revisoes_Pronta";
 export const TBL_METRICAS = "tecnico_metricas";
+export const TBL_LEMBRETES = "lembretes_clientes";
 
 // Mapa de status POS → PPV
 export const POS_TO_PPV_STATUS: Record<string, string> = {

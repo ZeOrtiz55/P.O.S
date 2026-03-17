@@ -84,6 +84,9 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
   const [gerarPPV, setGerarPPV] = useState(false);
   const [enviandoOmie, setEnviandoOmie] = useState(false);
   const [showDescontos, setShowDescontos] = useState(false);
+  const [lembretes, setLembretes] = useState<Array<{ id: number; lembrete: string }>>([]);
+  const [editingLembreteId, setEditingLembreteId] = useState<number | null>(null);
+  const [editingLembreteText, setEditingLembreteText] = useState("");
 
   // ── Derived values (useMemo) ──
   const subtotalHoras = qtdHoras * VALOR_HORA;
@@ -125,6 +128,32 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
     }
   }, []);
 
+  const fetchLembretes = useCallback(async (chave: string) => {
+    if (!chave) { setLembretes([]); return; }
+    try {
+      const res = await fetch(`/api/lembretes?cliente=${encodeURIComponent(chave)}`);
+      if (!res.ok) return;
+      const data = await res.json();
+      if (Array.isArray(data)) setLembretes(data);
+    } catch {
+      console.error("Erro ao buscar lembretes");
+    }
+  }, []);
+
+  const salvarLembreteInline = useCallback(async (id: number, texto: string) => {
+    try {
+      await fetch(`/api/lembretes/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ lembrete: texto }),
+      });
+      setLembretes((prev) => prev.map((l) => l.id === id ? { ...l, lembrete: texto } : l));
+      setEditingLembreteId(null);
+    } catch {
+      alert("Erro ao salvar lembrete.");
+    }
+  }, []);
+
   const selectCliente = useCallback(async (chave: string) => {
     setClienteChave(chave);
     if (!chave) return;
@@ -136,7 +165,8 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
     } catch {
       console.error("Erro ao buscar cliente");
     }
-  }, []);
+    fetchLembretes(chave);
+  }, [fetchLembretes]);
 
   const syncDiscount = useCallback((type: "P" | "V", value: number) => {
     if (type === "P") {
@@ -220,6 +250,7 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
       setPrevisaoExecucao(""); setPrevisaoFaturamento("");
       setProdutos([]); setTotalPecas(0); setShowLogs(false); setRequisicoes([]);
       setGerarPPV(false); setShowDescontos(false); setLoadingData(false);
+      setLembretes([]); setEditingLembreteId(null);
     }
     if (mode === "edit" && osId) {
       setLoadingData(true);
@@ -250,6 +281,13 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
           setRequisicoes(d.infoRequisicoes || []);
           setShowDescontos(dv > 0 || dh > 0 || dk > 0);
           if (d.ppv) loadPPV(d.ppv);
+          // Busca lembretes pelo nome do cliente
+          if (d.nomeCliente) {
+            fetch(`/api/lembretes?nome=${encodeURIComponent(d.nomeCliente)}`)
+              .then((r) => r.json())
+              .then((lbs) => { if (Array.isArray(lbs)) setLembretes(lbs); })
+              .catch(() => {});
+          }
         })
         .catch((err) => {
           console.error("Erro ao carregar OS:", err);
@@ -359,6 +397,36 @@ export default function OSDrawer({ visible, mode, osId, clientes, tecnicos, onCl
                       )}
                     </div>
                   )}
+
+                  {/* ── Lembretes do Cliente ── */}
+                  {lembretes.length > 0 && lembretes.map((l) => (
+                    <div key={l.id} className="os-lembrete-alert">
+                      <div className="os-lembrete-alert-header">
+                        <i className="fas fa-bell" /> Lembrete
+                      </div>
+                      {editingLembreteId === l.id ? (
+                        <div>
+                          <textarea
+                            rows={3}
+                            value={editingLembreteText}
+                            onChange={(e) => setEditingLembreteText(e.target.value)}
+                            style={{ marginBottom: 8 }}
+                          />
+                          <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+                            <button className="os-lembrete-edit-btn" onClick={() => setEditingLembreteId(null)}>Cancelar</button>
+                            <button className="os-lembrete-edit-btn" onClick={() => salvarLembreteInline(l.id, editingLembreteText)}>Salvar</button>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <div className="os-lembrete-alert-text">{l.lembrete}</div>
+                          <button className="os-lembrete-edit-btn" onClick={() => { setEditingLembreteId(l.id); setEditingLembreteText(l.lembrete); }}>
+                            <i className="fas fa-pen" style={{ marginRight: 4 }} /> Editar
+                          </button>
+                        </>
+                      )}
+                    </div>
+                  ))}
 
                   {/* ── Status ── */}
                   {mode === "edit" && (
